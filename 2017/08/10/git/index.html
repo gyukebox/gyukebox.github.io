@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Git 입문자를 위한 git 사용법 | GyuLog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="개발할 때 코딩 실력이나만큼 중요한 것은 바로 버전 관리죠. 현재 거의 필수적으로 쓰이는 버전 관리 툴인 git 에 관하여 알아보는 포스트입니다. (git 을 아예 모르는 사람들을 대상으로 포스팅했습니다.)">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git 입문자를 위한 git 사용법">
+<meta property="og:url" content="http://gyukebox.github.io/2017/08/10/git/index.html">
+<meta property="og:site_name" content="GyuLog">
+<meta property="og:description" content="개발할 때 코딩 실력이나만큼 중요한 것은 바로 버전 관리죠. 현재 거의 필수적으로 쓰이는 버전 관리 툴인 git 에 관하여 알아보는 포스트입니다. (git 을 아예 모르는 사람들을 대상으로 포스팅했습니다.)">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="http://gyukebox.github.io/images/git.png">
+<meta property="og:updated_time" content="2017-12-26T21:27:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git 입문자를 위한 git 사용법">
+<meta name="twitter:description" content="개발할 때 코딩 실력이나만큼 중요한 것은 바로 버전 관리죠. 현재 거의 필수적으로 쓰이는 버전 관리 툴인 git 에 관하여 알아보는 포스트입니다. (git 을 아예 모르는 사람들을 대상으로 포스팅했습니다.)">
+<meta name="twitter:image" content="http://gyukebox.github.io/images/git.png">
+  
+    <link rel="alternate" href="/atom.xml" title="GyuLog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">GyuLog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Byeong Gyu&#39;s dev blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="검색"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://gyukebox.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-git" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/10/git/" class="article-date">
+  <time datetime="2017-08-09T15:00:00.000Z" itemprop="datePublished">2017-08-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Git 입문자를 위한 git 사용법
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/images/git.png" alt=""></p>
+<p>개발할 때 코딩 실력이나만큼 중요한 것은 바로 버전 관리죠. 현재 거의 필수적으로 쓰이는 버전 관리 툴인 git 에 관하여 알아보는 포스트입니다. (git 을 아예 모르는 사람들을 대상으로 포스팅했습니다.)</p>
+<a id="more"></a>
+<p>해당 포스트에서는 터미널 명령어를 사용합니다. 터미널이 아직까지는 어려우신 분들은 <code>SourceTree</code> 를 활용하셔도 좋습니다(<code>SourceTree</code>에 관해서는 아래에 자세하게 명시하겠습니다).</p>
+<h2 id="버전-관리-툴의-필요성"><a href="#버전-관리-툴의-필요성" class="headerlink" title="버전 관리 툴의 필요성"></a>버전 관리 툴의 필요성</h2><p>학교에서 팀 프로젝트를 해봤다면 이런 경험이 한 번쯤은 있었을 것이다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">철수 : (압축파일을 푼다) 영희야, 너가 보내준 파일 받았는데 여기 OOOO한 부분에서 문제가 있어.</span><br><span class="line">      그리고 그때 말한 그 부분 내가 만들었어. 파일 보냈어! (코드를 압축해서 카카오톡으로 보낸다)</span><br><span class="line">영희 : (압축파일을 푼다) 그런데 철수야, 그렇게 만들면 내가 만든 부분이랑 자료형이 달라서 안 맞아.</span><br><span class="line">      이러이렇게 만들어서 다시 보내줘. 내가 만든 부분을 지금 수정하기 힘들어.</span><br><span class="line">철수 : (한숨을 쉬며) 그래 알았어... (새로 만든 코드를 압축해서 카카오톡으로 보낸다)</span><br><span class="line">      여기 다 만들었다.</span><br><span class="line">영희 : 헉 잠시만 철수야, 앞에 만든 부분이 문제가 생겨서 수정해야 할 것 같거든?</span><br><span class="line">      (압축파일을 풀고 수정을 시도하지만, 역시 안 맞는 부분이 있다)</span><br><span class="line">      그런데 이제는 ㅁㅁㅁㅁ한 부분에서 안 맞아. 다시 수정해야 되겠는데?</span><br><span class="line">철수, 영희 : 하...</span><br></pre></td></tr></table></figure>
+<p>보기만 해도 답답한 <del>암걸리는</del> 상황이다. 이럴 때, 서로의 코드에서 다른 부분을 알아서 잡아주는 도구가 있었으면 얼마나 편했을까?<br>또한, 카카오톡으로 매번 압축해서 파일을 보내고 압축을 풀고… 이런 불편한 작업 없이 소스코드를 한 곳에 모아서 관리할 수 있는 도구가 있었으면 얼마나 좋았을까?</p>
+<p>이런 상황에서 사용하도록 만들어진 도구가 <code>git</code> 이다! <code>git</code>을 이용하면 위의 상황에서 훨씬 편리하게 작업중인 소스코드를 관리하는 것이 가능하다. 이제 <code>git</code>에 관하여 자세하게 알아보자!</p>
+<h2 id="Git-설치하기"><a href="#Git-설치하기" class="headerlink" title="Git 설치하기"></a>Git 설치하기</h2><p>가장 먼저 할 일은, 역시나 설치이다. 설치 방법은 다음과 같다.</p>
+<h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><p>리눅스 배포판에 따라 다음 두 명령어 중 하나를 입력한다. (하나가 안되면 다른 거다)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install git</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git</span><br></pre></td></tr></table></figure>
+<h4 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a>macOS</h4><p><code>Homebrew</code>가 설치되어 있다면, 다음 명령어만 입력하면 된다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install git</span><br></pre></td></tr></table></figure>
+<p>(Homebrew 는 맥용 패키지 관리 도구입니다. 설치 방법 및 자세한 내용은 <a href="https://brew.sh/index_ko.html" target="_blank" rel="noopener">https://brew.sh/index_ko.html</a> 를 참고하세요.)</p>
+<h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><p>안타깝게도, 윈도우에서는 커맨드라인 하나만으로 git 을 설치할 수 없기에, 공식 사이트(<a href="https://git-scm.com" target="_blank" rel="noopener">https://git-scm.com</a>) 를 통해 설치하거나, <code>SourceTree</code>나 <code>Github Desktop</code> 같은 GUI 도구를 이용해야 한다. Command line tool 은 <a href="https://git-for-windows.github.io" target="_blank" rel="noopener">https://git-for-windows.github.io</a> 에서 다운로드 받을 수 있다.</p>
+<p>(사실 초보자들한테는 GUI 툴이 더 시작하기는 좋습니다.)<br>(윈도우 10 부터는 cmd 에서 bash 명령어를 이용하는 것이 가능해졌습니다. 하지만, 많이 부족하여 아직 사용하기는 시기상조다 라는 의견이 많습니다.)</p>
+<p>운영체제에 맞게 git 을 설치하였으면, 사용할 준비가 되었다!</p>
+<h2 id="Git-시작하기"><a href="#Git-시작하기" class="headerlink" title="Git 시작하기"></a>Git 시작하기</h2><p>이제 git 을 본격적으로 사용해 보자!</p>
+<h3 id="저장소-생성하기"><a href="#저장소-생성하기" class="headerlink" title="저장소 생성하기"></a>저장소 생성하기</h3><p>철수는 저번 프로젝트를 교훈삼아, 이번 프로젝트에서는 꼭 버전 관리 도구를 사용하기로 마음먹었고, git 을 사용하기로 하였다.<br>우선, 그는 자신이 작업중인 프로젝트 폴더로 들어가서, 다음 명령어로 git 을 시작했다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd /path/to/project</span><br><span class="line">$ git init</span><br></pre></td></tr></table></figure>
+<p><code>git init</code> 명령어를 사용하면 현재 작업중인 프로젝트 폴더에 <code>.git</code> 이라는 숨김 파일이 만들어지고,<br>“git 저장소”가 생성된다. git 은 <code>.git</code> 파일이 위치하는 디렉토리 및 하위 디렉토리에 위치해 있는 파일들을 관리한다.<br>만약 각자 다른 프로젝트를, 따로 관리하고 싶다면, 각각의 프로젝트 폴더에서 각자 <code>git init</code> 을 사용해 주어야 한다.</p>
+<h3 id="gitignore-파일"><a href="#gitignore-파일" class="headerlink" title=".gitignore 파일"></a>.gitignore 파일</h3><p>하지만, 모든 파일을 버전 관리에 포함하고 싶지는 않다. 가령 소스 파일을 빌드해서 만들어진 실행파일이나, 이미지 파일이나, 아니면 IDE 에서 자동으로 생성되지만 필요가 없는 폴더의 파일들(예: JetBrains IDE 의 <code>.idea</code>) 같은 경우는, 딱히 버전 관리를 해줄 필요가 없다.<br>Git 은 이렇게 사용자가 버전 관리를 하고 싶지 않은 파일들을 무시할 수 있는 기능이 있다. Git 이 무시하도록 하는 파일들을 명시하는 파일이 <code>.gitignore</code> 파일이다.</p>
+<p>다시 철수로 돌아가보자. 철수는 자신이 작업하고 있는 프로젝트의 파일 중, 이미지 파일을 포함한 몇몇 파일은 버전 관리의 필요성을 느끼지 않아서, <code>.gitignore</code> 파일에 이를 추가했다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.gitignore</span><br><span class="line">*.jpg</span><br><span class="line">*.png</span><br><span class="line">.idea/*</span><br><span class="line">.DS_Store</span><br></pre></td></tr></table></figure>
+<p>(해당 예시는 그냥 예시일 뿐입니다. 꼭 이렇게 작성하라는 뜻이 아니라, 여러분들의 필요에 맞게 <code>.gitignore</code> 파일을 작성하시면 됩니다.)</p>
+<p>예시를 자세히 보면 <code>.gitignore</code> 파일에서 무시 파일을 명시하는 방법은 아래와 같이 세 가지가 있음을 알 수 있는데,</p>
+<ul>
+<li>확장자를 명시하여 해당 확장자의 파일을 모두 무시</li>
+<li>디렉토리를 명시하여 해당 디렉토리 아래의 파일을 모두 무시 (이 경우 subdirectory 도 포함)</li>
+<li>파일 이름을 정확히 명시하여 해당 파일을 무시</li>
+</ul>
+<p>뭐 상황에 맞게 세 가지 방법 중 하나를 사용하면 된다.</p>
+<h2 id="파일의-상태"><a href="#파일의-상태" class="headerlink" title="파일의 상태"></a>파일의 상태</h2><p>Git 에서는 현재 작업중인 프로젝트 파일의 상태를 다음과 같이 세 가지로 분류한다.</p>
+<ul>
+<li>작업 중인 상태</li>
+<li>준비 상태</li>
+<li>완료 상태</li>
+</ul>
+<p>그리고, git 저장소에는 (눈에는 보이지 않지만) 파일들의 상태를 구분하기 위하여 세 종류의 영역이 있는데,</p>
+<ul>
+<li><code>working directory</code> : 현재 작업 중인 실제 파일들</li>
+<li><code>index</code> : 작업이 완료되어 확정을 준비하는 파일들 (이 영역에 파일들을 추가하는 행동을 <code>stage</code> 라고 한다)</li>
+<li><code>HEAD</code> : 최종 확정본들 (이 영역에 파일을 추가하는 행동을 <code>commit</code> 이라고 한다)</li>
+</ul>
+<p><del>왜 HEAD 만 대문자일까</del><br>위와 같다. 그렇다면, git 에서 소스코드를 관리하는 과정은 다음과 같다는 것을 알 수 있게 된다.</p>
+<ol>
+<li>소스 코드 작업을 완료한다.</li>
+<li>작업이 완료된 코드를 <code>index</code>에 <code>stage</code> 한다 (또는 스테이지에 올린다).</li>
+<li>필요한 파일들을 모두 <code>stage</code> 했으면 묶어서 <code>HEAD</code>에 <code>commit</code>(커밋) 한다.</li>
+</ol>
+<p><del>어때요 참 쉽죠?</del><br>예를 들어, 철수는 웹사이트를 하나 제작하기 위해서 맨 처음 화면인 <code>index.html</code> 을 처음 만들었다고 하자. 그러면 철수는 이 “<code>index.html</code> 제작” 을 하나의 버전(단계) 로 생각하여, git 에서 <code>stage</code> 후 <code>commit</code> 으로 관리할 수 있게 된 것이다.</p>
+<h2 id="상태-확인과-staging"><a href="#상태-확인과-staging" class="headerlink" title="상태 확인과 staging"></a>상태 확인과 staging</h2><p>철수는 소스 코드 작업을 마치고 현재 git 저장소의 상태를 알아보기 위하여 다음 명령어를 사용했다.<br><code>git status</code><br>이 명령어를 입력하니 다음과 같이 현재 파일들의 상태가 한 눈에 보였다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">Initial commit</span><br><span class="line"></span><br><span class="line">Untracked files:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line"></span><br><span class="line">	index.html</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span><br></pre></td></tr></table></figure>
+<p><code>git status</code> 명령어를 사용하면, 현재 어떤 파일이 추가되고 삭제되었는지, 어떤 파일이 아직 추가되지 않았는지 볼 수 있다. 심지어 “추가하려면 <code>git add</code> 를 쓰세요” 라고 친절하게 알려준다! 그렇다, 파일을 <code>index</code>에 <code>stage</code> 하고 싶으면 <code>git add</code>를 사용하면 된다.</p>
+<p>철수는 작업이 완료된 파일을 스테이지에 올리기 위하여 다음과 같이 진행했고, 상황을 한번 더 확인했다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ git add index.html</span><br><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">Initial commit</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)</span><br><span class="line"></span><br><span class="line">	new file:   index.html</span><br></pre></td></tr></table></figure>
+<p><code>git add &lt;파일이름&gt;</code> 을 사용해서 해당 파일을 스테이지에 올릴 수 있다.<br><code>git status</code> 를 사용하면, 스테이지에 올라간 파일들은 “change to be committed: “ 라는 문구 아래에 놓이고, 아직 스테이지에 올라가지 않은 파일들은 “untracked files: “ 라는 문구 아래에 놓이게 된다.</p>
+<p>하지만, 일일이 모든 파일을 추가하자니 좀 귀찮은 감이 있다. 위와 같이 하나의 파일만을 추가하는 명령 말고도, 다음과 같은 표현들을 사용하면 한번에 여러 개의 파일들을 동시에 스테이지에 올릴 수가 있다.</p>
+<ul>
+<li><code>git add *.foo</code> : foo 확장자를 가진 모든 파일들을 스테이지에 올린다.</li>
+<li><code>git add dir/*</code> : dir 디렉토리 안의 모든 파일들을 스테이지에 올린다.</li>
+<li><code>git add --all</code> : 아직 스테이지에 올라가지 않은 모든 파일들을 스테이지에 올린다.</li>
+</ul>
+<p>하지만, 동일 확장자나 동일 디렉토리 안에 현재 버전에 포함시키고 싶지 않은 파일이 들어 있을 수도 있으므로 신중하게 써야 한다.</p>
+<h2 id="Commit-과-commit-message"><a href="#Commit-과-commit-message" class="headerlink" title="Commit 과 commit message"></a>Commit 과 commit message</h2><p>철수는 필요한 모든 파일들을 스테이지에 올렸다. 스테이지에 올라간 파일들을 묶어서 커밋하기 위하여 다음과 같이 명령어를 사용하였다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;Initial commit : added index.html&quot;</span><br><span class="line">[master (root-commit) 772f2e6] Initial commit : added index.html</span><br><span class="line"> 1 file changed, 8 insertions(+)</span><br><span class="line"> create mode 100644 index.html</span><br><span class="line"></span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working tree clean</span><br></pre></td></tr></table></figure>
+<p>git 에 내용을 커밋할 때는 위와 같이 <code>git commit -m &quot;commit message&quot;</code> 라는 명령어를 사용한다. 그러면 친절하게 커밋의 내용을 보여준다. 또한 커밋 이후에 <code>git status</code> 로 상태를 확인하면 다음과 같이 보이게 된다. (물론 아직 커밋을 안 한 파일이 있으면 다르게 나온다.)</p>
+<p>앞의 과정들과 약간 다른 점은, 커밋을 할 때에는 커밋 메시지(commit message) 를 작성한다는 점인데, 현재 개발자가 무슨 작업을 진행했는지 알 수 있도록 하기 위해서다. 따라서, 커밋 메시지는 <strong>간결하지만 자세하게</strong> 작성해야 한다! (<del>이것은 마치 따뜻한 냉커피..</del>)<br>길지 않으면서, 현재 작업을 통하여 예전과 변경된 점이 명확하게 드러나도록 작성하면 좋은 커밋 메시지가 될 수 있다.</p>
+<h2 id="원격-저장소"><a href="#원격-저장소" class="headerlink" title="원격 저장소"></a>원격 저장소</h2><p>철수는 이제 작업한 내용을 영희한테 보여줄 준비가 되었다. 하지만 또 파일을 압축해서 카카오톡으로 보낸다는 건 상상도 하기 싫은 일. 따라서, 현재 저장소와 연동할 수 있는 <strong>원격 저장소</strong> 를 두기로 하였다. 그래서, 다음과 같이 했다.</p>
+<p>우선 <code>GitHub</code> 에서 레포지토리를 하나 만들었다. 그 다음, 아래의 명령어로 깃허브 원격 저장소랑 현재 저장소를 연동시켰다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add origin https://github.com/gyukebox/gittutorial.git</span><br></pre></td></tr></table></figure>
+<p>(GitHub 저장소는 그냥 만들면 됩니다. 깃허브 가서 Create Repository 누르면 친절하게 나옵니다.)<br><code>git remote add [단축이름] [url]</code> 명령어를 사용하여 url 의 원격 저장소를 단축 이름을 사용하여 현재 git 저장소랑 연동시켰다(github 말고도 다른 원격 저장소들도 있지만, 거의 다 github 를 사용하므로 예시도 그냥 github 로 들겠습니다).</p>
+<p>현재 저장소에 연동된 원격 저장소들을 보려면 다음과 같은 명령어를 사용하면 된다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">origin	https://github.com/gyukebox/gittutorial.git (fetch)</span><br><span class="line">origin	https://github.com/gyukebox/gittutorial.git (push)</span><br></pre></td></tr></table></figure>
+<p>여기서 <code>-v</code> 옵션은 verbose 의 의미로, “자세히” 라는 뜻이다. 저 옵션을 붙이지 않으면 그냥 단축 이름만 나오지만, 옵션을 붙이면 원격 저장소 url 과 같이 나온다.</p>
+<h3 id="원격-저장소에-올리기-push"><a href="#원격-저장소에-올리기-push" class="headerlink" title="원격 저장소에 올리기(push)"></a>원격 저장소에 올리기(push)</h3><p>이제 원격 저장소도 만들었으니, 원격 저장소에 현재 작업한 내용들을 올리는 일만 남았다. 철수는 다음과 같이 현재 작업 내용을 올렸다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br><span class="line">Counting objects: 3, done.</span><br><span class="line">Delta compression using up to 8 threads.</span><br><span class="line">Compressing objects: 100% (2/2), done.</span><br><span class="line">Writing objects: 100% (3/3), 314 bytes | 0 bytes/s, done.</span><br><span class="line">Total 3 (delta 0), reused 0 (delta 0)</span><br><span class="line">To https://github.com/gyukebox/gittutorial.git</span><br><span class="line"> * [new branch]      master -&gt; master</span><br></pre></td></tr></table></figure>
+<p><code>git push [원격 단축이름] [브랜치]</code> 명령어를 사용하면, 해당 단축이름을 가지는 원격 저장소로 코드가 올라가게 된다. 여기서 <code>master</code>는 <strong>브랜치</strong> 인데, 2 명 이상이 협업할 때 아주 중요한 개념이 된다(<code>master</code>는 기본 브랜치 이름입니다. 브랜치에 관해서는 아직 자세히 모르셔도 됩니다. 추후 포스팅으로 찾아뵙겠습니다).</p>
+<p>이제 철수는 원격 저장소를 통하여 소스 코드를 올리므로 더 이상 영희에게 파일을 압축하여 카카오톡으로 보내지 않아도 된다! 영희가 해당 저장소 링크로 들어가서 코드를 확인하면 그만이니깐.</p>
+<h2 id="요약"><a href="#요약" class="headerlink" title="요약"></a>요약</h2><p><code>git</code> 에 관한 아주 기본적인 개념들을 알아봤는데, 간단하게 정리하면 다음과 같이 요약할 수 있다.</p>
+<ul>
+<li><code>git init</code> : 새로운 git 저장소를 만든다.</li>
+<li><code>git status</code> : 현재 저장소의 상황을 본다.</li>
+<li><code>git add &lt;file&gt;</code> : 파일을 스테이지에 올린다.</li>
+<li><code>git commit -m &quot;commit message&quot;</code> : 메시지와 함께 커밋한다.</li>
+<li><code>git remote add [name] [url]</code> : 원격 저장소를 추가한다.</li>
+<li><code>git push [remote] [branch]</code> : 원격 저장소에 올린다.</li>
+</ul>
+<h2 id="앞으로-더-알아볼-내용"><a href="#앞으로-더-알아볼-내용" class="headerlink" title="앞으로 더 알아볼 내용"></a>앞으로 더 알아볼 내용</h2><p>(추후 포스팅으로 해당 개념들에 대하여 설명하겠습니다.)</p>
+<ul>
+<li>원격 저장소에서 가져오기 : <code>pull</code> 과 <code>clone</code></li>
+<li>원격 저장소의 설명을 담당하는 <code>README.md</code></li>
+<li>브랜치(branch)</li>
+<li><code>pull request</code> 와 <code>merge</code></li>
+<li><code>rebase</code></li>
+</ul>
+<h2 id="참고한-글들"><a href="#참고한-글들" class="headerlink" title="참고한 글들"></a>참고한 글들</h2><ul>
+<li><a href="https://rogerdudler.github.io/git-guide/index.ko.html" target="_blank" rel="noopener">https://rogerdudler.github.io/git-guide/index.ko.html</a></li>
+<li><a href="http://blog.weirdx.io/post/45529" target="_blank" rel="noopener">http://blog.weirdx.io/post/45529</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://gyukebox.github.io/2017/08/10/git/" data-id="cjbo3a88c000w1fmqsvvjm0sv" class="article-share-link">공유</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/15/pycon/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">최신</strong>
+      <div class="article-nav-title">
+        
+          PyCon Korea 2017 참석후기
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/08/welcome/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">이전</strong>
+      <div class="article-nav-title">Welcome to GyuLog!</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">카테고리</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Functional-Programming/">Functional Programming</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/컨퍼런스-후기/">컨퍼런스 후기</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">태그</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyCon/">PyCon</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/컨퍼런스/">컨퍼런스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/함수형프로그래밍/">함수형프로그래밍</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/후기/">후기</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">태그 클라우드</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/PyCon/" style="font-size: 10px;">PyCon</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/컨퍼런스/" style="font-size: 10px;">컨퍼런스</a> <a href="/tags/함수형프로그래밍/" style="font-size: 10px;">함수형프로그래밍</a> <a href="/tags/후기/" style="font-size: 10px;">후기</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">아카이브</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">12월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">10월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">9월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">최근 포스트</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/12/27/django-2.0-url/">Django 2.0 의 주 변경사항 살펴보기!</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/03/docstring_decorator/">Python 함수의 docstring 과 decorator</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/30/firstclass/">파이썬으로 알아보는 일급 객체(first-class citizen)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/15/pycon/">PyCon Korea 2017 참석후기</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/10/git/">Git 입문자를 위한 git 사용법</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Byeong Gyu Choi<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

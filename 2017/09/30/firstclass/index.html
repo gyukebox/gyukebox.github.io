@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>파이썬으로 알아보는 일급 객체(first-class citizen) | GyuLog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="함수형 프로그래밍(functional programming) 을 공부하다보면, 가장 많이 나오는 말이 “일급 객체”, 혹은 “일급 시민” 일 겁니다. 일급 객체가 무엇인지 파이썬의 함수를 예시로 들어 알아보는 포스팅입니다.">
+<meta name="keywords" content="함수형프로그래밍,Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="파이썬으로 알아보는 일급 객체(first-class citizen)">
+<meta property="og:url" content="http://gyukebox.github.io/2017/09/30/firstclass/index.html">
+<meta property="og:site_name" content="GyuLog">
+<meta property="og:description" content="함수형 프로그래밍(functional programming) 을 공부하다보면, 가장 많이 나오는 말이 “일급 객체”, 혹은 “일급 시민” 일 겁니다. 일급 객체가 무엇인지 파이썬의 함수를 예시로 들어 알아보는 포스팅입니다.">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="http://gyukebox.github.io/images/python.png">
+<meta property="og:updated_time" content="2017-12-26T21:25:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="파이썬으로 알아보는 일급 객체(first-class citizen)">
+<meta name="twitter:description" content="함수형 프로그래밍(functional programming) 을 공부하다보면, 가장 많이 나오는 말이 “일급 객체”, 혹은 “일급 시민” 일 겁니다. 일급 객체가 무엇인지 파이썬의 함수를 예시로 들어 알아보는 포스팅입니다.">
+<meta name="twitter:image" content="http://gyukebox.github.io/images/python.png">
+  
+    <link rel="alternate" href="/atom.xml" title="GyuLog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">GyuLog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Byeong Gyu&#39;s dev blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="검색"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://gyukebox.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-firstclass" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/30/firstclass/" class="article-date">
+  <time datetime="2017-09-29T15:00:00.000Z" itemprop="datePublished">2017-09-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>►<a class="article-category-link" href="/categories/Python/Functional-Programming/">Functional Programming</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      파이썬으로 알아보는 일급 객체(first-class citizen)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/images/python.png" alt=""></p>
+<p>함수형 프로그래밍(functional programming) 을 공부하다보면, 가장 많이 나오는 말이 “일급 객체”, 혹은 “일급 시민” 일 겁니다. 일급 객체가 무엇인지 파이썬의 함수를 예시로 들어 알아보는 포스팅입니다.</p>
+<a id="more"></a>
+<p>일급 객체, 일급 함수라는 개념은 영국의 크리스토퍼 스트레이치라는 컴퓨터 과학자가 1960 년에 처음 소개한 개념이다. 일급 객체가 되려면 다음과 같은 조건을 만족해야 한다.</p>
+<ul>
+<li>변수나 데이터 구조 안에 담을 수 있다.</li>
+<li>매개변수로 전달이 가능하다.</li>
+<li>리턴값으로 사용될 수 있다.</li>
+</ul>
+<h2 id="파이썬의-함수는-일급-객체이다"><a href="#파이썬의-함수는-일급-객체이다" class="headerlink" title="파이썬의 함수는 일급 객체이다"></a>파이썬의 함수는 일급 객체이다</h2><p>해당 조건을 보면, <strong>파이썬의 함수는 일급 객체이다</strong> 라는 결론을 쉽게 도출할 수 있다. 왜냐하면 파이썬의 함수는 파라메터로 넘길 수 있고, 리턴값으로 사용될 수 있기 때문이다.</p>
+<h3 id="변수나-데이터-구조-안에-담을-수-있다"><a href="#변수나-데이터-구조-안에-담을-수-있다" class="headerlink" title="변수나 데이터 구조 안에 담을 수 있다"></a>변수나 데이터 구조 안에 담을 수 있다</h3><p>파이썬의 함수는 변수에 할당할 수 있다. 다음 <code>greeting.py</code> 코드를 보면서 눈으로 확인해보자!</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'Hello friend!'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bye</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'See you later!'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">greeting = hello</span><br><span class="line">greeting()</span><br><span class="line">print(greeting)</span><br><span class="line">print()</span><br><span class="line"></span><br><span class="line">greeting = bye</span><br><span class="line">greeting()</span><br><span class="line">print(greeting)</span><br><span class="line">print()</span><br><span class="line"></span><br><span class="line">print(type(greeting))</span><br></pre></td></tr></table></figure>
+<p>greeting 은 function 타입의 변수이고, 처음에는 hello 였다가 나중에는 bye 로 바뀐 것을 볼 수 있을 것이다. 실행 결과와 greeting 의 타입을 확인해 보면 다음과 같다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ python greeting.py</span><br><span class="line">Hello friend!</span><br><span class="line">&lt;function hello at 0x101863c80&gt;</span><br><span class="line"></span><br><span class="line">See you later!</span><br><span class="line">&lt;function bye at 0x101863d08&gt;</span><br><span class="line"></span><br><span class="line">&lt;class &apos;function&apos;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="매개변수로-전달이-가능하다"><a href="#매개변수로-전달이-가능하다" class="headerlink" title="매개변수로 전달이 가능하다"></a>매개변수로 전달이 가능하다</h3><p>또한, 파이썬의 함수는 매개변수로 전달이 가능하다. 다음의 <code>addition.py</code> 코드를 보면서 눈으로 알아보자.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_two</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calculate</span><span class="params">(func, arg1, arg2)</span>:</span></span><br><span class="line">    print(<span class="string">'calculation:'</span>, func.__name__)</span><br><span class="line">    print(<span class="string">'result:'</span>, func(arg1, arg2))</span><br><span class="line"></span><br><span class="line">calculate(add_two, <span class="number">4</span>, <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<p><code>calculate</code> 함수에 <code>add_two</code> 함수를 넘긴 것을 볼 수 있다!<br>위의 코드를 실행하면 당연하게도, 다음과 같은 결과가 나온다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ python addition.py</span><br><span class="line">calculation: add_two</span><br><span class="line">result: 14</span><br></pre></td></tr></table></figure>
+<p>이런 표현법의 장점은, 기능을 수정하고 싶을 때에도 기존 코드를 전혀 수정하지 않고 기능 수정이 가능하는 점이다. 예를 들어, <code>calculate</code> 으로 두 수를 곱하는 연산을 행하고 싶다고 하면, <code>calculate</code> 함수를 전혀 수정하지 않은 채로, 두 수를 곱하는 함수 <code>multiply_two</code> 를 새로 정의한 후 <code>calculate</code> 함수에 인자로 넘겨주면 그만이다.</p>
+<h3 id="리턴값으로-사용될-수-있다"><a href="#리턴값으로-사용될-수-있다" class="headerlink" title="리턴값으로 사용될 수 있다."></a>리턴값으로 사용될 수 있다.</h3><p>마지막으로, 파이썬의 함수는 리턴값으로 사용될 수 있다. 이것도 역시 눈으로 보면 이해가 쉽다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">document_it</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">new_function</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">        print(<span class="string">'Running function:'</span>, func.__name__)</span><br><span class="line">        print(<span class="string">'Positional arguments:'</span>, args)</span><br><span class="line">        print(<span class="string">'Keyword arguments:'</span>, kwargs)</span><br><span class="line">        result = func(*args, **kwargs)</span><br><span class="line">        print(<span class="string">'Result:'</span>, result)</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    <span class="keyword">return</span> new_function</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_ints</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line"></span><br><span class="line"><span class="comment"># add_ints(3, 5) = 8</span></span><br><span class="line">decorated_add_ints = document_it(add_ints)</span><br><span class="line">print(decorated_add_ints(<span class="number">3</span>, <span class="number">5</span>))</span><br></pre></td></tr></table></figure>
+<p>(어쩌다 보니 예제에서 일급객체의 세 가지 요소가 다 드러났다)<br><code>add_ints</code> 함수에 간단한 설명을 붙이려고 <code>document_it</code> 함수를 정의하였다. <code>document_it</code> 함수는 내부함수인 <code>new_function</code> 을 리턴하는 구조이다.<br>맨 밑의 두 줄도 유심히 살펴보자. <code>document_it</code> 함수에 <code>add_ints</code> 함수를 인자로 넘긴 후에, <code>decorated_add_ints</code> 에 저장하였다! 실행 결과를 살펴보면 다음과 같다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ python decorator.py</span><br><span class="line">Running function: add_ints</span><br><span class="line">Positional arguments: (3, 5)</span><br><span class="line">Keyword arguments: &#123;&#125;</span><br><span class="line">Result: 8</span><br><span class="line">8</span><br></pre></td></tr></table></figure>
+<p>(이 예제는 파이썬의 또 다른 문법인 데코레이터(<code>decorator</code>) 입니다. 데코레이터에 대해서는 추후 포스팅으로 찾아뵙겠습니다.)</p>
+<h2 id="추가-함수가-일급-객체인-언어와-그렇지-않은-언어"><a href="#추가-함수가-일급-객체인-언어와-그렇지-않은-언어" class="headerlink" title="추가 - 함수가 일급 객체인 언어와 그렇지 않은 언어"></a>추가 - 함수가 일급 객체인 언어와 그렇지 않은 언어</h2><p>이제 “일급 객체” 란 무엇이고, 파이썬의 함수가 왜 일급 객체인지 알 수 있게 되었다. 그렇다면 다른 언어는 어떨까?</p>
+<ul>
+<li>함수가 일급 객체인 언어 : Javascript, Scala, Go</li>
+<li>함수가 일급 객체가 아님 : C, Java</li>
+</ul>
+<p>(위의 언어가 전부가 아닙니다! 실제로 함수형 프로그래밍 언어는 많이 존재합니다)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://gyukebox.github.io/2017/09/30/firstclass/" data-id="cjbo39zh5000t1fmqw108n19w" class="article-share-link">공유</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/함수형프로그래밍/">함수형프로그래밍</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/10/03/docstring_decorator/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">최신</strong>
+      <div class="article-nav-title">
+        
+          Python 함수의 docstring 과 decorator
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/15/pycon/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">이전</strong>
+      <div class="article-nav-title">PyCon Korea 2017 참석후기</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">카테고리</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Functional-Programming/">Functional Programming</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/컨퍼런스-후기/">컨퍼런스 후기</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">태그</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyCon/">PyCon</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/컨퍼런스/">컨퍼런스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/함수형프로그래밍/">함수형프로그래밍</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/후기/">후기</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">태그 클라우드</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/PyCon/" style="font-size: 10px;">PyCon</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/컨퍼런스/" style="font-size: 10px;">컨퍼런스</a> <a href="/tags/함수형프로그래밍/" style="font-size: 10px;">함수형프로그래밍</a> <a href="/tags/후기/" style="font-size: 10px;">후기</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">아카이브</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">12월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">10월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">9월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">최근 포스트</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/12/27/django-2.0-url/">Django 2.0 의 주 변경사항 살펴보기!</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/03/docstring_decorator/">Python 함수의 docstring 과 decorator</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/30/firstclass/">파이썬으로 알아보는 일급 객체(first-class citizen)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/15/pycon/">PyCon Korea 2017 참석후기</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/10/git/">Git 입문자를 위한 git 사용법</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Byeong Gyu Choi<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
