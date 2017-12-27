@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo + Github Pages 로 블로그 만들기 | GyuLog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="깃허브에 홈페이지를 구축할 수 있다는 사실을 아시나요?GitHub Pages 를 활용하면, 깃허브에 홈페이지를 구축할 수 있는데요, 홈페이지를 구축할 때 필요한 HTML 과 CSS 파일들을 만들어 주는 작업을 하는 도구 중 하나가 Hexo 입니다.이번에는 Hexo 를 사용하여, GitHub Pages 에 블로그를 구축하는 방법에 대하여 알아보도록 하겠습니">
+<meta name="keywords" content="git,블로그,Hexo,Github">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo + Github Pages 로 블로그 만들기">
+<meta property="og:url" content="http://gyukebox.github.io/2017/12/28/starting-hexo/index.html">
+<meta property="og:site_name" content="GyuLog">
+<meta property="og:description" content="깃허브에 홈페이지를 구축할 수 있다는 사실을 아시나요?GitHub Pages 를 활용하면, 깃허브에 홈페이지를 구축할 수 있는데요, 홈페이지를 구축할 때 필요한 HTML 과 CSS 파일들을 만들어 주는 작업을 하는 도구 중 하나가 Hexo 입니다.이번에는 Hexo 를 사용하여, GitHub Pages 에 블로그를 구축하는 방법에 대하여 알아보도록 하겠습니">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="http://gyukebox.github.io/images/hexo.png">
+<meta property="og:image" content="http://gyukebox.github.io/images/new_repository.png">
+<meta property="og:updated_time" content="2017-12-27T18:26:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo + Github Pages 로 블로그 만들기">
+<meta name="twitter:description" content="깃허브에 홈페이지를 구축할 수 있다는 사실을 아시나요?GitHub Pages 를 활용하면, 깃허브에 홈페이지를 구축할 수 있는데요, 홈페이지를 구축할 때 필요한 HTML 과 CSS 파일들을 만들어 주는 작업을 하는 도구 중 하나가 Hexo 입니다.이번에는 Hexo 를 사용하여, GitHub Pages 에 블로그를 구축하는 방법에 대하여 알아보도록 하겠습니">
+<meta name="twitter:image" content="http://gyukebox.github.io/images/hexo.png">
+  
+    <link rel="alternate" href="/atom.xml" title="GyuLog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">GyuLog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Byeong Gyu&#39;s dev blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About Me</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="검색"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://gyukebox.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-starting-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/28/starting-hexo/" class="article-date">
+  <time datetime="2017-12-27T18:26:42.000Z" itemprop="datePublished">2017-12-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/블로그/">블로그</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hexo + Github Pages 로 블로그 만들기
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/images/hexo.png" alt=""></p>
+<p>깃허브에 홈페이지를 구축할 수 있다는 사실을 아시나요?<br><a href="">GitHub Pages</a> 를 활용하면, 깃허브에 홈페이지를 구축할 수 있는데요, 홈페이지를 구축할 때 필요한 HTML 과 CSS 파일들을 만들어 주는 작업을 하는 도구 중 하나가 Hexo 입니다.<br>이번에는 Hexo 를 사용하여, GitHub Pages 에 블로그를 구축하는 방법에 대하여 알아보도록 하겠습니다!</p>
+<a id="more"></a>
+<h2 id="Hexo-란"><a href="#Hexo-란" class="headerlink" title="Hexo 란?"></a>Hexo 란?</h2><p>Hexo 는 JavaScript 기반의 <strong>정적 페이지 생성기(Static Page Generator)</strong>입니다.<br>자바스크립트 기반이기 때문에, 웹(특히 프론트엔드) 개발자들에게 인기가 많으며, 무려 <strong>19832개의 깃허브 스타</strong>를 받았는데요, 정적 페이지 생성기 중에서는 <strong>3위</strong>에 해당하는 수입니다!<br>또한, 한국어로 문서화가 엄청 잘 되어 있어서 시작하기도 쉽습니다.</p>
+<p>(정적사이트 생성기 스타수 1위는 지킬(jekyll), 2위는 휴고(hugo) 입니다. 각각 루비와 고 언어 기반입니다.)</p>
+<h2 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h2><p>Hexo 를 설치하는 방법은 간단합니다.<br>Hexo 는 JavaScript 기반이므로, Node.js 런타임 환경이 필요합니다. 또한, 깃허브 페이지를 사용하므로 당연히 git 도 설치가 되어 있어야 합니다.<br>Node.js 및 git 설치 방법은 링크로 대체하도록 하겠습니다.</p>
+<ul>
+<li><a href="https://nodejs.org/ko/download/" target="_blank" rel="noopener">Node.js 설치</a></li>
+<li><a href="https://git-scm.com/" target="_blank" rel="noopener">Git 설치</a></li>
+</ul>
+<p>(혹시 git 이 처음이시라면, 제가 예전에 쓴 <a href="https://gyukebox.github.io/2017/08/10/git/">Git 사용법</a>에 대한 글이 있는데, 한번 읽고 오시는 걸 추천드려요!)</p>
+<p>Node.js 와 git 설치를 완료하셨다면, 이제 hexo 를 사용할 준비가 다 되었습니다!<br>우선, 먼저 hexo client 를 설치하도록 하겠습니다. 다음 명령어로 설치해주세요.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>(참고) 제 환경은 이렇게 생겼습니다:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ hexo -v</span><br><span class="line">hexo: 3.4.4</span><br><span class="line">hexo-cli: 1.0.4</span><br><span class="line">os: Darwin 16.7.0 darwin x64</span><br><span class="line">http_parser: 2.7.0</span><br><span class="line">node: 8.4.0</span><br><span class="line">v8: 6.0.286.52</span><br><span class="line">uv: 1.13.1</span><br><span class="line">zlib: 1.2.11</span><br><span class="line">ares: 1.10.1-DEV</span><br><span class="line">modules: 57</span><br><span class="line">nghttp2: 1.22.0</span><br><span class="line">openssl: 1.0.2l</span><br><span class="line">icu: 59.1</span><br><span class="line">unicode: 9.0</span><br><span class="line">cldr: 31.0.1</span><br><span class="line">tz: 2017b</span><br></pre></td></tr></table></figure></p>
+<h2 id="시작하기"><a href="#시작하기" class="headerlink" title="시작하기"></a>시작하기</h2><p>좋습니다. 이제 블로그를 위한 디렉토리(폴더) 를 만들 준비가 되었습니다!<br>다음 명령어로 블로그를 생성해주시고, 해당 디렉토리로 이동해주세요.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init my-blog</span><br><span class="line">$ cd my-blog</span><br></pre></td></tr></table></figure>
+<p>그 다음, 로컬 서버를 실행해 봅시다! (뒤에서 자세히 다루겠지만) 다음 명령어로 서버를 실행해 보세요!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>이제 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 으로 들어가봅시다. 어떤가요, Hello World 페이지가 이쁘게 잘 생성되었나요?</p>
+<h2 id="기본-설정"><a href="#기본-설정" class="headerlink" title="기본 설정"></a>기본 설정</h2><p>좋아요. 이제 이 페이지를 나만의 것으로, 더 이쁘게 꾸밀 일만 남았습니다. 그러기 위해서는 그 전에 설정을 해줘야겠죠?<br>현재 프로젝트 폴더의 구조는 다음과 같을 것입니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">my-blog</span><br><span class="line">├── README.md</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">│   ├── draft.md</span><br><span class="line">│   ├── page.md</span><br><span class="line">│   └── post.md</span><br><span class="line">├── source</span><br><span class="line">│   └── _posts</span><br><span class="line">│       └── hello-world.md</span><br><span class="line">|</span><br><span class="line">├── themes</span><br><span class="line">│   └── landscape</span><br><span class="line">└── yarn.lock</span><br></pre></td></tr></table></figure></p>
+<p>여기서, <code>_config.yml</code> 파일을 열어줍시다.</p>
+<p>설정 가능한 항목이 엄청 많은데요, 그 중 주된 설정들을 살펴보면,</p>
+<p><code>title</code> : 사이트의 제목입니다.<br><code>subtitle</code> : 사이트의 부제목 입니다.<br><code>author</code> : 작가입니다. 여러분의 이름을 써줍시다.<br><code>language</code> : 우리는 한국어를 사용하니깐 <code>ko</code> 를 써줍시다. 영어를 기본값으로 하시려면 <code>en</code> 을 써주시면 됩니다.</p>
+<p>현재 우리가 건드릴 수 있을만한 설정은 이 정도입니다. 다 설정하셨다면, 브라우저를 새로고침해봅시다.<br>어떤가요, 사이트의 제목이 바뀌었나요? 언어는요?</p>
+<h2 id="글쓰기"><a href="#글쓰기" class="headerlink" title="글쓰기"></a>글쓰기</h2><p>이제 첫 포스팅을 해 보도록 합시다! 포스트는 다음 명령어를 입력하여서 생성할 수 있습니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new post &lt;post-name&gt;</span><br></pre></td></tr></table></figure></p>
+<p>무슨 일이 일어났나요? <code>source/_posts</code> 폴더에 <code>&lt;post_name&gt;.md</code> 라는 이름의 마크다운 파일이 새로 생성되었습니다. 그리고, 해당 파일을 열어다 보시면, 일정 형식의 헤더가 삽입되어 있는 모습을 보실 수가 있으실 거에요. 이런 식으로요.</p>
+<h3 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Title</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2017</span><span class="string">/12/28</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+<p>이런 헤더를 hexo 에서는 <code>front-matter</code> 이라고 합니다. 해당 포스트에 대한 설정이라고 생각하시면 됩니다. 위의 예시의 경우를 살펴보면,</p>
+<p><code>title</code> : 우리의 포스트 제목입니다<br><code>date</code> : 우리의 포스트가 생성된 날짜입니다. 자동으로 생성됩니다.<br><code>tags</code> : 태그를 삽입할 수 있습니다. 태그는,<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Foo</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Bar</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Baz</span></span><br></pre></td></tr></table></figure></p>
+<p>이런 식으로 삽입하실 수 있습니다. 순서에는 상관이 없습니다.</p>
+<p>위의 예시에는 나와있지 않지만, </p>
+<p><code>categories</code> : 카테고리를 설정할 수 있습니다. 카테고리는,<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Foo</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Bar</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Baz</span></span><br></pre></td></tr></table></figure></p>
+<p>이런 식으로 삽입하실 수 있는데, <code>Foo/Bar/Baz</code> 형태의, 순차적인 형태를 가지게 됩니다. 따라서 순서가 매우 중요합니다.<br><code>layout</code> : 해당 페이지의 레이아웃입니다.<br>보통 <code>page</code>, <code>post</code>, <code>draft</code> 중 하나의 값을 가지게 되며, <code>scaffolds</code> 폴더 안의 파일 이름이면 어떤 것이든지 들어갈 수 있습니다.<br><code>layout</code> 의 값을 <code>false</code> 로 설정하게 되면, 해당 포스트는 처리되지 않습니다.<br><code>layout</code> 의 값을 설정하지 않으면, <code>_config.yml</code> 의 <code>default_layout</code> 값을 참조하게 됩니다.</p>
+<h3 id="본문-작성하기"><a href="#본문-작성하기" class="headerlink" title="본문 작성하기"></a>본문 작성하기</h3><p>이제, 포스트에 대한 환경설정이 끝났으니, 글을 쓸 일만 남았네요!<br>Hexo 는 markdown 문법을 지원하므로, 마크다운 문법을 사용하여 포스트를 작성하시면 아주 편합니다. 마크다운 문법에 관해서는 <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank" rel="noopener">링크</a> 로 대체하도록 하겠습니다.</p>
+<h3 id="Drafts"><a href="#Drafts" class="headerlink" title="Drafts"></a>Drafts</h3><p>Hexo 에는 미 완성된 포스트를 보관하고, 실제 사이트에는 반영하지 않게 할 수 있는 drafts 라는 기능이 있습니다. Drafts 는 <code>sourct/_drafts</code> 폴더에 따로 관리된다는 차이점만 있을 뿐, <code>_posts</code> 안의 실제 포스트와 형식 면에서는 차이가 거의 없습니다. 하나, <code>date</code> 만 없네요.</p>
+<p>다음 명령어를 사용하면 draft 를 만드실 수 있습니다:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new draft &lt;post-name&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>sourct/_drafts</code> 폴더를 보시면 <code>&lt;post_name&gt;.md</code> 라는 파일이 생성되어 있는 것을 보실 수가 있습니다.<br>포스트 작성이 끝난 후, <code>date</code> 속성을 추가해주고, <code>_posts</code> 폴더로 옮겨주면 포스트가 되지만, </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo publish &lt;post-name&gt;</span><br></pre></td></tr></table></figure>
+<p>위의 명령어를 사용하시면 자동으로 draft 를 post 로 만들어줍니다!</p>
+<h2 id="배포"><a href="#배포" class="headerlink" title="배포"></a>배포</h2><p>포스트를 다 작성하였고, 로컬 서버에서 정상적으로 표시되는 것을 확인하였다면, 실제 사이트에 올리는 일만 남았겠죠?<br>이 과정을 배포(deploy) 라고 하는데, 실제로 배포하기 전에 해야 할 일들이 몇 가지 있습니다.</p>
+<h3 id="Github-Repository-생성"><a href="#Github-Repository-생성" class="headerlink" title="Github Repository 생성"></a>Github Repository 생성</h3><p>첫 번째는, 깃허브 저장소를 생성하는 일입니다.<br>아래 사진과 같이, 저장소 이름을 <strong><code>&lt;username&gt;.github.io</code></strong> 로 만들어주세요!<br><img src="/images/new_repository.png" alt=""></p>
+<h3 id="배포-설정하기"><a href="#배포-설정하기" class="headerlink" title="배포 설정하기"></a>배포 설정하기</h3><p>Create Repository 를 누르셨다면, 다시 <code>_config.yml</code> 파일로 돌아가서 배포 설정을 건드려 보도록 합시다.<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="attr">https://github.com/&lt;username&gt;/&lt;username&gt;.github.io</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br><span class="line"><span class="attr">  message:</span></span><br></pre></td></tr></table></figure></p>
+<p>맨 밑의 <code>deploy</code> 란을 다음과 같이 작성하신 후,</p>
+<h3 id="파일-생성하기"><a href="#파일-생성하기" class="headerlink" title="파일 생성하기"></a>파일 생성하기</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>위의 명령어로 배포 파일들을 생성해 줍시다!<br><code>public</code> 폴더가 새로 생성된 것을 확인하실 수 있는데, 해당 폴더가 깃허브 저장소에 올라가며, 해당 폴더에는 마크다운으로 작성한 포스트의 HTML, 그리고 테마의 CSS와 자바스크립트가 들어있습니다.</p>
+<h3 id="배포하기"><a href="#배포하기" class="headerlink" title="배포하기"></a>배포하기</h3><p>배포 파일 생성까지 다 하셨다면, hexo 를 github 에다 배포할 수 있는 도구를 설치하셔야 하는데,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>위의 명령어로 설치하실 수 있습니다. 설치하셨다면, </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>위의 명령어 하나면 배포가 완료됩니다!</p>
+<p>설정은 이미 한번 하셨으므로,<br><code>generate</code> 후 <code>deploy</code> 명령어를 입력하시면 언제든지 사이트를 배포할 수 있습니다.</p>
+<p>이제, <a href="http://username.github.io" target="_blank" rel="noopener">http://username.github.io</a> 로 들어가봅시다. 사이트가 잘 생성되어 있나요?</p>
+<h2 id="더-알아볼-내용들"><a href="#더-알아볼-내용들" class="headerlink" title="더 알아볼 내용들"></a>더 알아볼 내용들</h2><p>이번 포스트에서는 간단한 과정만 다뤘던 지라, hexo 의 더욱 매력적인 feature 들은 아쉽지만, 건너뛰었습니다.<br>Hexo의 모든 기능들은 <a href="https://hexo.io/ko/docs/" target="_blank" rel="noopener">공식 문서</a>에서 확인하실 수 있습니다.<br>추후 포스팅에서 다루어 볼 내용들은, </p>
+<ul>
+<li>테마 설정하는 법</li>
+<li>사이트 구조 커스터마이징 하는 법</li>
+<li>플러그인 사용하는 법</li>
+</ul>
+<p>등이 있겠네요!</p>
+<p>이번 포스팅에서는 github pages 가 무엇인지, hexo 가 무엇인지에 관해서 짤막하게 알아보았고, hexo 를 활용하여 블로그를 만드는 방법을 알아보았습니다.<br>역시 개발자라면, 블로그죠! Happy blogging!</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://gyukebox.github.io/2017/12/28/starting-hexo/" data-id="cjbpe996f000gm4mqrqxqqsgf" class="article-share-link">공유</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/블로그/">블로그</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/12/27/django-2.0-url/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">이전</strong>
+      <div class="article-nav-title">Django 2.0 의 주 변경사항 살펴보기!</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">카테고리</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Functional-Programming/">Functional Programming</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/블로그/">블로그</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/컨퍼런스-후기/">컨퍼런스 후기</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">태그</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyCon/">PyCon</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/블로그/">블로그</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/컨퍼런스/">컨퍼런스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/함수형프로그래밍/">함수형프로그래밍</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/후기/">후기</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">태그 클라우드</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/PyCon/" style="font-size: 10px;">PyCon</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/블로그/" style="font-size: 10px;">블로그</a> <a href="/tags/컨퍼런스/" style="font-size: 10px;">컨퍼런스</a> <a href="/tags/함수형프로그래밍/" style="font-size: 10px;">함수형프로그래밍</a> <a href="/tags/후기/" style="font-size: 10px;">후기</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">아카이브</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">12월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">10월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">9월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">최근 포스트</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/12/28/starting-hexo/">Hexo + Github Pages 로 블로그 만들기</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/27/django-2.0-url/">Django 2.0 의 주 변경사항 살펴보기!</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/03/docstring_decorator/">Python 함수의 docstring 과 decorator</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/30/firstclass/">파이썬으로 알아보는 일급 객체(first-class citizen)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/15/pycon/">PyCon Korea 2017 참석후기</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Byeong Gyu Choi<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About Me</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

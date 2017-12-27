@@ -8,7 +8,7 @@
   <title>Django 2.0 의 주 변경사항 살펴보기! | GyuLog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Django 2.0 이 릴리즈 되었습니다! 1.11 버전과 비교해 다른 주요 상황들을 살펴봄과 동시에, 2.0에서만 지원하는 핵심 기능들을 소개합니다!">
-<meta name="keywords" content="Python,Web,Django">
+<meta name="keywords" content="Python,Django,Web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Django 2.0 의 주 변경사항 살펴보기!">
 <meta property="og:url" content="http://gyukebox.github.io/2017/12/27/django-2.0-url/index.html">
@@ -116,9 +116,9 @@
 </blockquote>
 <p>(얼른 파이썬 3 으로 넘어오세요!)<br>이제부터는 장고 2.0 의 주요 변경사항을 살펴보도록 하겠습니다!</p>
 <h2 id="URL-패턴의-단순화"><a href="#URL-패턴의-단순화" class="headerlink" title="URL 패턴의 단순화"></a>URL 패턴의 단순화</h2><p>(아마 거의 모든 분들이 같은 생각이시겠지만) 장고 2.0 을 쓰면서 가장 편해졌다고 느낀 변경사항이 아닐 까 합니다!</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(<span class="string">r'^articles/(?P&lt;year&gt;[0-9]&#123;4&#125;)/$'</span>, views.year_archive),</span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(<span class="string">r'^articles/(?P&lt;year&gt;[0-9]&#123;4&#125;)/$'</span>, views.year_archive),</span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <p>위 예시처럼 정규표현식을 사용해야 했던 url 을,</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'articles/&lt;int:year&gt;/'</span>, views.year_archive),</span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'articles/&lt;int:year&gt;/'</span>, views.year_archive),</span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <p>다음과 같이 간단하게, 훨씬 쉽게 사용할 수 있습니다!<br>변경 사항을 살펴보면,</p>
 <ul>
 <li>기존 <code>django.conf.urls</code> 모듈에 있던 url 관련 함수들은, <code>django.urls</code> 로 옮겨졌습니다.</li>
@@ -126,7 +126,7 @@
 <li><code>include()</code> 함수 또한 <code>django.urls</code> 로 옮겨졌습니다.</li>
 </ul>
 <p>이 정도입니다.<br>기존 정규식을 사용한 url 표현을 하지 못하는 것은 아닙니다. <code>django.urls.re_path()</code> 함수를 사용하시면 여전히,</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">re_path(<span class="string">r'^articles/(?P&lt;year&gt;[0-9]&#123;4&#125;)/$'</span>, views.year_archive),</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re_path(<span class="string">r'^articles/(?P&lt;year&gt;[0-9]&#123;4&#125;)/$'</span>, views.year_archive),</span><br></pre></td></tr></table></figure>
 <p>다음과 같이 정규식을 사용하실 수 있습니다.</p>
 <p>개인적인 의견) 기존에 정규식을 많이 사용해보신 분들이라면 <code>re_path</code> 가 편하실 수 있다고 생각합니다. 하지만, 가독성 부분에서는 새로운 방식인 <code>path</code> 를 사용하는 것이 더 낫다고 생각합니다.</p>
 <h2 id="더욱-친화적으로-변한-모바일-admin-사이트"><a href="#더욱-친화적으로-변한-모바일-admin-사이트" class="headerlink" title="더욱 친화적으로 변한 모바일 admin 사이트"></a>더욱 친화적으로 변한 모바일 <code>admin</code> 사이트</h2><p>모바일 관리자 페이지가 반응형으로 바뀌었습니다!</p>
@@ -164,7 +164,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://gyukebox.github.io/2017/12/27/django-2.0-url/" data-id="cjboxwaln00093dmqfgsbvs8e" class="article-share-link">공유</a>
+      <a data-url="http://gyukebox.github.io/2017/12/27/django-2.0-url/" data-id="cjbpe995q0002m4mq47odnmsb" class="article-share-link">공유</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
@@ -174,6 +174,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2017/12/28/starting-hexo/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">최신</strong>
+      <div class="article-nav-title">
+        
+          Hexo + Github Pages 로 블로그 만들기
+        
+      </div>
+    </a>
   
   
     <a href="/2017/10/03/docstring_decorator/" id="article-nav-older" class="article-nav-link-wrap">
@@ -194,7 +203,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">카테고리</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Functional-Programming/">Functional Programming</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/컨퍼런스-후기/">컨퍼런스 후기</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Functional-Programming/">Functional Programming</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/블로그/">블로그</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/컨퍼런스-후기/">컨퍼런스 후기</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -204,7 +213,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">태그</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyCon/">PyCon</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/컨퍼런스/">컨퍼런스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/함수형프로그래밍/">함수형프로그래밍</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/후기/">후기</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyCon/">PyCon</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/블로그/">블로그</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/컨퍼런스/">컨퍼런스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/함수형프로그래밍/">함수형프로그래밍</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/후기/">후기</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -214,7 +223,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">태그 클라우드</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/PyCon/" style="font-size: 10px;">PyCon</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/컨퍼런스/" style="font-size: 10px;">컨퍼런스</a> <a href="/tags/함수형프로그래밍/" style="font-size: 10px;">함수형프로그래밍</a> <a href="/tags/후기/" style="font-size: 10px;">후기</a>
+      <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/PyCon/" style="font-size: 10px;">PyCon</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/블로그/" style="font-size: 10px;">블로그</a> <a href="/tags/컨퍼런스/" style="font-size: 10px;">컨퍼런스</a> <a href="/tags/함수형프로그래밍/" style="font-size: 10px;">함수형프로그래밍</a> <a href="/tags/후기/" style="font-size: 10px;">후기</a>
     </div>
   </div>
 
@@ -223,7 +232,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">아카이브</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">12월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">10월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">9월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">12월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">10월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">9월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -234,6 +243,10 @@
     <h3 class="widget-title">최근 포스트</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/12/28/starting-hexo/">Hexo + Github Pages 로 블로그 만들기</a>
+          </li>
         
           <li>
             <a href="/2017/12/27/django-2.0-url/">Django 2.0 의 주 변경사항 살펴보기!</a>
@@ -249,10 +262,6 @@
         
           <li>
             <a href="/2017/08/15/pycon/">PyCon Korea 2017 참석후기</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/10/git/">Git 입문자를 위한 git 사용법</a>
           </li>
         
       </ul>
