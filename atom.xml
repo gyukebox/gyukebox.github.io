@@ -120,11 +120,11 @@
     
       <category term="블로그" scheme="http://gyukebox.github.io/tags/%EB%B8%94%EB%A1%9C%EA%B7%B8/"/>
     
+      <category term="git" scheme="http://gyukebox.github.io/tags/git/"/>
+    
       <category term="Hexo" scheme="http://gyukebox.github.io/tags/Hexo/"/>
     
       <category term="Github" scheme="http://gyukebox.github.io/tags/Github/"/>
-    
-      <category term="git" scheme="http://gyukebox.github.io/tags/git/"/>
     
   </entry>
   
