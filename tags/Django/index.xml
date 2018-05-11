@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Django on GyuLog</title>
+    <link>https://gyukebox.github.io/tags/django/</link>
+    <description>Recent content in Django on GyuLog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-KR</language>
+    <lastBuildDate>Mon, 05 Mar 2018 01:35:53 +0000</lastBuildDate>
+    
+	<atom:link href="https://gyukebox.github.io/tags/django/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Django 에서 여러 가지의 설정을 할 수 있는 방법</title>
+      <link>https://gyukebox.github.io/blog/django-%EC%97%90%EC%84%9C-%EC%97%AC%EB%9F%AC-%EA%B0%80%EC%A7%80%EC%9D%98-%EC%84%A4%EC%A0%95%EC%9D%84-%ED%95%A0-%EC%88%98-%EC%9E%88%EB%8A%94-%EB%B0%A9%EB%B2%95/</link>
+      <pubDate>Mon, 05 Mar 2018 01:35:53 +0000</pubDate>
+      
+      <guid>https://gyukebox.github.io/blog/django-%EC%97%90%EC%84%9C-%EC%97%AC%EB%9F%AC-%EA%B0%80%EC%A7%80%EC%9D%98-%EC%84%A4%EC%A0%95%EC%9D%84-%ED%95%A0-%EC%88%98-%EC%9E%88%EB%8A%94-%EB%B0%A9%EB%B2%95/</guid>
+      <description>때로는, 장고 어플리케이션에서 세팅 파일 하나로는 모든 설정을 다 할 수 없는 경우가 존재합니다. 이런 경우에, 여러 개의 설정 파일을 만들어서 다중 설정을 할 수 있는 방법을 소개합니다!
+Intro: 처음 django 프로젝트를 만들면&amp;hellip; 처음 django 프로젝트를 생성할 때 다음과 같은 명령어로 생성하는 것이 대부분이다. (PyCharm 같은 IDE를 사용한다 한들 결과는 똑같거나 비슷하다.)
+$ django-admin startproject PROJECT_NAME  해당 명령어로 프로젝트를 만든 후 PROJECT_NAME 이라는 이름의 프로젝트 폴더로 들어가면,
+PROJECT_NAME/ ├── PROJECT_NAME │ ├── __init__.</description>
+    </item>
+    
+    <item>
+      <title>Django 2.0 의 주 변경사항 살펴보기!</title>
+      <link>https://gyukebox.github.io/blog/django-2.0-%EC%9D%98-%EC%A3%BC-%EB%B3%80%EA%B2%BD%EC%82%AC%ED%95%AD-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0/</link>
+      <pubDate>Wed, 27 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://gyukebox.github.io/blog/django-2.0-%EC%9D%98-%EC%A3%BC-%EB%B3%80%EA%B2%BD%EC%82%AC%ED%95%AD-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0/</guid>
+      <description>Django 2.0 이 릴리즈 되었습니다! 1.11 버전과 비교해 다른 주요 상황들을 살펴봄과 동시에, 2.0에서만 지원하는 핵심 기능들을 소개합니다!
+Django 2.0 이 12 월 2 일 자로 정식 출시 되었습니다! 그런데 왜 포스팅은 12 월 27 일?
+써본 결과, 확실히 1.11 버전 보다 편해진 점이 많은 것 같은데, 이전 버전과 비교함과 동시에 2.0 버전의 핵심 기능을 소개하고자 해당 포스팅을 준비하게 되었습니다.
+호환되는 Python 버전 Django 2.0 은 파이썬 3.4, 3.5, 3.</description>
+    </item>
+    
+  </channel>
+</rss>
