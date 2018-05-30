@@ -6,10 +6,20 @@
     <description>Recent content in Git on GyuLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Wed, 30 Aug 2017 01:24:37 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 11 May 2018 22:27:11 +0900</lastBuildDate>
     
 	<atom:link href="https://gyukebox.github.io/categories/git/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Git 입문자를 위한 git 사용법 (2)</title>
+      <link>https://gyukebox.github.io/blog/git-%EC%9E%85%EB%AC%B8%EC%9E%90%EB%A5%BC-%EC%9C%84%ED%95%9C-git-%EC%82%AC%EC%9A%A9%EB%B2%95-2/</link>
+      <pubDate>Fri, 11 May 2018 22:27:11 +0900</pubDate>
+      
+      <guid>https://gyukebox.github.io/blog/git-%EC%9E%85%EB%AC%B8%EC%9E%90%EB%A5%BC-%EC%9C%84%ED%95%9C-git-%EC%82%AC%EC%9A%A9%EB%B2%95-2/</guid>
+      <description> Git 입문자를 위한 git 사용법 1편에 이어서 git의 더욱 매력적인 기능들을 알아보는 포스팅입니다.
+브랜치 $ git checkout -b develop  $ git checkout develop  브랜치 합치기 - Merge $ git checkout master $ git merge master  변경 사항 임시 저장하기 - Stash $ git stash $ git stash save  $ git stash list  $ git stash pop &amp;lt;STASH_NAME&amp;gt;  커밋 정리하기 및 되돌리기 - Rebase $ git rebase -i HEAD~(정리하고 싶은 커밋의 수)  </description>
+    </item>
     
     <item>
       <title>Git 입문자를 위한 git 사용법</title>

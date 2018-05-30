@@ -6,10 +6,23 @@
     <description>Recent content in Python on GyuLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Fri, 11 May 2018 21:39:21 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 30 May 2018 01:11:16 +0900</lastBuildDate>
     
 	<atom:link href="https://gyukebox.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Django 설정 더욱 세부적으로 분리하기</title>
+      <link>https://gyukebox.github.io/blog/django-%EC%84%A4%EC%A0%95-%EB%8D%94%EC%9A%B1-%EC%84%B8%EB%B6%80%EC%A0%81%EC%9C%BC%EB%A1%9C-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B0/</link>
+      <pubDate>Wed, 30 May 2018 01:11:16 +0900</pubDate>
+      
+      <guid>https://gyukebox.github.io/blog/django-%EC%84%A4%EC%A0%95-%EB%8D%94%EC%9A%B1-%EC%84%B8%EB%B6%80%EC%A0%81%EC%9C%BC%EB%A1%9C-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B0/</guid>
+      <description>들어가기에 앞서 이전 포스팅에서, Django 설정을 분기하는 방법에 대해서 포스팅한 적이 있습니다. 해당 포스팅 링크
+하지만, 설정의 카테고리별로 완벽하게 분리하는 데에는 한계가 있었습니다.
+이번 포스팅에서는 설정을 카테고리별로, 더욱 세부적으로 분리하는 방법에 대해서 다룹니다.
+장고의 설정은 형식 안에서, 어떤 식으로 분리하든 깔끔하기만 하면 상관이 없기에, 이 포스팅은 그냥 참고용으로만 보시고, 본인에게 맞는 설정방법으로 설정하시면 됩니다 :)
+기존 단순 설정 분리 방식과의 비교 이전 포스팅에서 다룬 설정 분리는, 환경에 따른 설정 분리만 하였다.</description>
+    </item>
     
     <item>
       <title>Django 커스텀 유저 모델 만들기</title>

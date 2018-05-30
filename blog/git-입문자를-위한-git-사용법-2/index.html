@@ -13,9 +13,9 @@
 <meta property="og:site_name" content="GyuLog" />
 <meta property="og:locale" content="nn_NO" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://gyukebox.github.io/categories/functional-programming/" />
-<meta property="og:title" content="Functional Programming" />
-<meta property="twitter:title" content="Functional Programming">
+<meta property="og:url" content="https://gyukebox.github.io/blog/git-%EC%9E%85%EB%AC%B8%EC%9E%90%EB%A5%BC-%EC%9C%84%ED%95%9C-git-%EC%82%AC%EC%9A%A9%EB%B2%95-2/" />
+<meta property="og:title" content="Git 입문자를 위한 git 사용법 (2)" />
+<meta property="twitter:title" content="Git 입문자를 위한 git 사용법 (2)">
 
     <meta property="twitter:card" content="summary">
 
@@ -25,10 +25,10 @@
 <title>
 
 
-     GyuLog - Functional Programming 
+     GyuLog - Git 입문자를 위한 git 사용법 (2) 
 
 </title>
-<link rel="canonical" href="https://gyukebox.github.io/categories/functional-programming/">
+<link rel="canonical" href="https://gyukebox.github.io/blog/git-%EC%9E%85%EB%AC%B8%EC%9E%90%EB%A5%BC-%EC%9C%84%ED%95%9C-git-%EC%82%AC%EC%9A%A9%EB%B2%95-2/">
 
 
 <style media="screen">
@@ -1272,8 +1272,6 @@ margin-left: -4%;
 
 
 
-  <link href="https://gyukebox.github.io/categories/functional-programming/index.xml" rel="alternate" type="application/rss+xml" title="GyuLog" />
-
 
 </head>
 
@@ -1281,7 +1279,7 @@ margin-left: -4%;
 <body>
 
 
-<div class="header header-home column">
+<div class="header column">
 
     <div class="container">
         
@@ -1318,24 +1316,127 @@ margin-left: -4%;
     </div>
 </div>
 
-<div class="main column">
+
+
+
+<div class="main post non-narrow zero-top-spacing column">
     <div class="container">
         <div class="content">
-            <div class="posts">
-                <div class="page-heading">Posts about Functional Programming</div>
-                <ul>
-                    
-                        <li class="post-item">
-    <span class="meta">Sep 30, 2017</span>
-    <a href="https://gyukebox.github.io/blog/%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9C%BC%EB%A1%9C-%EC%95%8C%EC%95%84%EB%B3%B4%EB%8A%94-%EC%9D%BC%EA%B8%89-%EA%B0%9D%EC%B2%B4first-class-citizen/"><span>파이썬으로 알아보는 일급 객체(first-class citizen)</span></a>
-</li>
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
 
+    Git 입문자를 위한 git 사용법 (2)
+
+</div>
+
+                </div>
+                <div class="meta">
+                    <div class="date" title="Fri May 11 2018 22:27:11 KST">May 11, 2018</div>
                     
-                </ul>
+                        
+                    
+                    <div class="reading-time middot">1 minute read</div>
+                    <div class="tags">
+                        <ul>
+                          
+                            <li class="middot"><a href="https://gyukebox.github.io/tags/git">git</a> </li>
+                          
+                        </ul>
+                    </div>
+                    <div class="tags">
+                        <ul>
+                          
+                          
+                        </ul>
+                    </div>
+                </div>
             </div>
+            <div class="markdown">
+                
+    
+    
+
+<p><a href="https://gyukebox.github.io/blog/git-%EC%9E%85%EB%AC%B8%EC%9E%90%EB%A5%BC-%EC%9C%84%ED%95%9C-git-%EC%82%AC%EC%9A%A9%EB%B2%95/">Git 입문자를 위한 git 사용법</a> 1편에 이어서 git의 더욱 매력적인 기능들을 알아보는 포스팅입니다.</p>
+
+<!-- more -->
+
+<h2 id="브랜치">브랜치</h2>
+
+<pre><code>$ git checkout -b develop
+</code></pre>
+
+<pre><code>$ git checkout develop
+</code></pre>
+
+<h2 id="브랜치-합치기-merge">브랜치 합치기 - Merge</h2>
+
+<pre><code>$ git checkout master
+$ git merge master
+</code></pre>
+
+<h2 id="변경-사항-임시-저장하기-stash">변경 사항 임시 저장하기 - Stash</h2>
+
+<pre><code>$ git stash
+$ git stash save
+</code></pre>
+
+<pre><code>$ git stash list
+</code></pre>
+
+<pre><code>$ git stash pop &lt;STASH_NAME&gt;
+</code></pre>
+
+<h2 id="커밋-정리하기-및-되돌리기-rebase">커밋 정리하기 및 되돌리기 - Rebase</h2>
+
+<pre><code>$ git rebase -i HEAD~(정리하고 싶은 커밋의 수)
+</code></pre>
+
+
+                <br>
+            </div>
+            
+            <div class="share">
+                  
+                  <a href="" class="ssk ssk-facebook"></a>
+                  
+                  
+                  <a href="" class="ssk ssk-twitter"></a>
+                  
+                  
+                  <a href="" class="ssk ssk-google-plus"></a>
+                  
+                  
+                  <a href="" class="ssk ssk-linkedin"></a>
+                  
+            </div>
+            
+            
+                <div class="navigation">
+                    
+                    <div>
+                        <img class="icon" src="https://gyukebox.github.io/img/back.svg" alt="back" />
+                        <a href="https://gyukebox.github.io/blog/django-%EC%BB%A4%EC%8A%A4%ED%85%80-%EC%9C%A0%EC%A0%80-%EB%AA%A8%EB%8D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0/">Django 커스텀 유저 모델 만들기</a>
+                    </div>
+                    
+                    <div style="width: 100%;"></div>
+                    
+                    <div>
+                        <a href="https://gyukebox.github.io/blog/django-%EC%84%A4%EC%A0%95-%EB%8D%94%EC%9A%B1-%EC%84%B8%EB%B6%80%EC%A0%81%EC%9C%BC%EB%A1%9C-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B0/">Django 설정 더욱 세부적으로 분리하기</a>
+                        <img class="icon" src="https://gyukebox.github.io/img/next.svg" alt="next" />
+                    </div>
+                    
+                </div>
+            
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
         </div>
     </div>
 </div>
+
 <div class="footer column">
     <div class="container">
 
@@ -1343,7 +1444,7 @@ margin-left: -4%;
             <div class="copyright">
             
             
-                <a href="https://github.com/gyukebox/gyukebox.github.io/tree/master/content/" target="_blank">View this post on GitHub</a>
+                <a href="https://github.com/gyukebox/gyukebox.github.io/tree/master/content/blog/git-2.md" target="_blank">View this post on GitHub</a>
             
             </div>
         

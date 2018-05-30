@@ -6,10 +6,60 @@
     <description>Recent content on GyuLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Fri, 11 May 2018 21:39:21 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 30 May 2018 01:11:16 +0900</lastBuildDate>
     
 	<atom:link href="https://gyukebox.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Django 설정 더욱 세부적으로 분리하기</title>
+      <link>https://gyukebox.github.io/blog/django-%EC%84%A4%EC%A0%95-%EB%8D%94%EC%9A%B1-%EC%84%B8%EB%B6%80%EC%A0%81%EC%9C%BC%EB%A1%9C-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B0/</link>
+      <pubDate>Wed, 30 May 2018 01:11:16 +0900</pubDate>
+      
+      <guid>https://gyukebox.github.io/blog/django-%EC%84%A4%EC%A0%95-%EB%8D%94%EC%9A%B1-%EC%84%B8%EB%B6%80%EC%A0%81%EC%9C%BC%EB%A1%9C-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B0/</guid>
+      <description>들어가기에 앞서 이전 포스팅에서, Django 설정을 분기하는 방법에 대해서 포스팅한 적이 있습니다. 해당 포스팅 링크
+하지만, 설정의 카테고리별로 완벽하게 분리하는 데에는 한계가 있었습니다.
+이번 포스팅에서는 설정을 카테고리별로, 더욱 세부적으로 분리하는 방법에 대해서 다룹니다.
+장고의 설정은 형식 안에서, 어떤 식으로 분리하든 깔끔하기만 하면 상관이 없기에, 이 포스팅은 그냥 참고용으로만 보시고, 본인에게 맞는 설정방법으로 설정하시면 됩니다 :)
+기존 단순 설정 분리 방식과의 비교 이전 포스팅에서 다룬 설정 분리는, 환경에 따른 설정 분리만 하였다.</description>
+    </item>
+    
+    <item>
+      <title>n월 m일의 요일 알아내기</title>
+      <link>https://gyukebox.github.io/algorithms/day-of-week/</link>
+      <pubDate>Mon, 14 May 2018 01:31:05 +0900</pubDate>
+      
+      <guid>https://gyukebox.github.io/algorithms/day-of-week/</guid>
+      <description> 출처 : https://www.acmicpc.net/problem/1924
+문제 요약 2007년 1월 1일이 월요일이라고 할 때 n월 m일은 무슨 요일일지 알아내시오.
+문제 해결 전략 </description>
+    </item>
+    
+    <item>
+      <title>Welcome to Algorithms!</title>
+      <link>https://gyukebox.github.io/algorithms/welcome/</link>
+      <pubDate>Mon, 14 May 2018 01:09:40 +0900</pubDate>
+      
+      <guid>https://gyukebox.github.io/algorithms/welcome/</guid>
+      <description>What this is about 파이썬 개발자의 알고리즘 로그 입니다.
+그냥 제가 풀고 싶은 문제들을 풀 거에요. 그냥 아무거나.
+쉬운 문제일 수도 있고, 어려운 문제일 수도 있습니다.
+문제들의 출처는 Baekjoon 혹은 Codewars 가 될 것입니다!
+Sources 모든 소스 코드의 전체는 다음 깃허브 레포지토리 에서 열람하실 수 있습니다.
+https://github.com/gyukebox/algo
+또한, 매 포스팅 마다 전체 소스코드 링크를 걸어두겠습니다!
+(포스트 내 첨부는 소스 코드의 길이에 따라서 힘들 수가 있어요)</description>
+    </item>
+    
+    <item>
+      <title>Git 입문자를 위한 git 사용법 (2)</title>
+      <link>https://gyukebox.github.io/blog/git-%EC%9E%85%EB%AC%B8%EC%9E%90%EB%A5%BC-%EC%9C%84%ED%95%9C-git-%EC%82%AC%EC%9A%A9%EB%B2%95-2/</link>
+      <pubDate>Fri, 11 May 2018 22:27:11 +0900</pubDate>
+      
+      <guid>https://gyukebox.github.io/blog/git-%EC%9E%85%EB%AC%B8%EC%9E%90%EB%A5%BC-%EC%9C%84%ED%95%9C-git-%EC%82%AC%EC%9A%A9%EB%B2%95-2/</guid>
+      <description> Git 입문자를 위한 git 사용법 1편에 이어서 git의 더욱 매력적인 기능들을 알아보는 포스팅입니다.
+브랜치 $ git checkout -b develop  $ git checkout develop  브랜치 합치기 - Merge $ git checkout master $ git merge master  변경 사항 임시 저장하기 - Stash $ git stash $ git stash save  $ git stash list  $ git stash pop &amp;lt;STASH_NAME&amp;gt;  커밋 정리하기 및 되돌리기 - Rebase $ git rebase -i HEAD~(정리하고 싶은 커밋의 수)  </description>
+    </item>
     
     <item>
       <title>Django 커스텀 유저 모델 만들기</title>
@@ -169,7 +219,8 @@ Django 2.0 이 12 월 2 일 자로 정식 출시 되었습니다! 그런데 왜 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gyukebox.github.io/home/</guid>
-      <description>Gyu&amp;rsquo;s Daydream 장고를 사랑하는 파이썬 백엔드 개발자의 몽상로그</description>
+      <description>Gyu&amp;rsquo;s Daydream 배워서 남 주기를 좋아하는,
+리액트와 장고를 사랑하는 웹 개발자의 몽상로그</description>
     </item>
     
   </channel>
