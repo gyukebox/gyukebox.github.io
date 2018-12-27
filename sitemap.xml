@@ -3,6 +3,26 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://gyukebox.github.io/blog/2018%EB%85%84-%EB%8F%8C%EC%95%84%EB%B3%B4%EA%B8%B0/</loc>
+    <lastmod>2018-12-27T19:48:11+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gyukebox.github.io/blog/django-firebase-%EC%99%80-%ED%95%A8%EA%BB%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/</loc>
+    <lastmod>2018-10-12T22:52:28+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gyukebox.github.io/blog/django-%EC%96%B4%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98-docker-%EC%97%90-%EC%98%AC%EB%A6%AC%EA%B8%B0/</loc>
+    <lastmod>2018-07-23T18:00:55+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gyukebox.github.io/blog/django-%EC%97%90%EC%84%9C-%ED%8C%8C%EC%9D%BC-%EC%97%85%EB%A1%9C%EB%93%9C-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0/</loc>
+    <lastmod>2018-07-09T13:44:30+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://gyukebox.github.io/blog/django-%EC%BB%A4%EC%8A%A4%ED%85%80-%EB%AF%B8%EB%93%A4%EC%9B%A8%EC%96%B4-%EB%A7%8C%EB%93%A4%EA%B8%B0---rest-framework-%EB%A5%BC-%EC%9C%84%ED%95%9C-http-response-formatting/</loc>
     <lastmod>2018-06-08T19:44:30+09:00</lastmod>
   </url>
@@ -107,7 +127,7 @@
   
   <url>
     <loc>https://gyukebox.github.io/blog/</loc>
-    <lastmod>2018-06-08T19:44:30+09:00</lastmod>
+    <lastmod>2018-12-27T19:48:11+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -137,19 +157,31 @@
   
   <url>
     <loc>https://gyukebox.github.io/tags/django/</loc>
-    <lastmod>2018-06-08T19:44:30+09:00</lastmod>
+    <lastmod>2018-10-12T22:52:28+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://gyukebox.github.io/categories/django/</loc>
-    <lastmod>2018-06-08T19:44:30+09:00</lastmod>
+    <lastmod>2018-07-23T18:00:55+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gyukebox.github.io/tags/djangorestframework/</loc>
+    <lastmod>2018-10-12T22:52:28+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://gyukebox.github.io/categories/djangorestframework/</loc>
     <lastmod>2018-06-08T19:44:30+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gyukebox.github.io/tags/docker/</loc>
+    <lastmod>2018-07-23T18:00:55+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -179,7 +211,7 @@
   
   <url>
     <loc>https://gyukebox.github.io/</loc>
-    <lastmod>2018-06-08T19:44:30+09:00</lastmod>
+    <lastmod>2018-12-27T19:48:11+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -201,13 +233,13 @@
   
   <url>
     <loc>https://gyukebox.github.io/tags/python/</loc>
-    <lastmod>2018-06-08T19:44:30+09:00</lastmod>
+    <lastmod>2018-10-12T22:52:28+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://gyukebox.github.io/categories/python/</loc>
-    <lastmod>2018-06-08T19:44:30+09:00</lastmod>
+    <lastmod>2018-07-23T18:00:55+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -231,13 +263,13 @@
   
   <url>
     <loc>https://gyukebox.github.io/tags/%EB%B8%94%EB%A1%9C%EA%B7%B8/</loc>
-    <lastmod>2017-12-31T15:24:54+00:00</lastmod>
+    <lastmod>2018-12-27T19:48:11+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://gyukebox.github.io/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/</loc>
-    <lastmod>2017-12-31T15:24:54+00:00</lastmod>
+    <lastmod>2018-12-27T19:48:11+09:00</lastmod>
     <priority>0</priority>
   </url>
   
