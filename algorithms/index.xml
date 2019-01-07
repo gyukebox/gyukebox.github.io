@@ -6,10 +6,21 @@
     <description>Recent content in Algorithms on GyuLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Mon, 14 May 2018 01:31:05 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 07 Jan 2019 21:13:34 +0900</lastBuildDate>
     
 	<atom:link href="https://gyukebox.github.io/algorithms/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Count Luck</title>
+      <link>https://gyukebox.github.io/algorithms/count-luck/</link>
+      <pubDate>Mon, 07 Jan 2019 21:13:34 +0900</pubDate>
+      
+      <guid>https://gyukebox.github.io/algorithms/count-luck/</guid>
+      <description>문제 전체 문제: https://www.hackerrank.com/challenges/count-luck/problem
+요약하자면, A에서 B로 가는 길이 오직 하나일 때, 갈림길이 몇 번 나오는지 찾는 문제이다. 아래의 그림에서 M이 시작점, *이 종점, X는 벽, .는 길이다.
+.X.X......X .X*.X.XXX.X .XX.X.XM... ......XXXX.  해결 방법 이런 길찾기 류 문제는 DFS(Depth First Search - 깊이 우선 탐색) 나 BFS(Breadth First Search - 너비 우선 탐색) 를 사용하면 간단하게 해결할 수 있다. 하지만 이 문제만 놓고 보면 DFS를 사용하는 것이 더욱 편리하다</description>
+    </item>
     
     <item>
       <title>n월 m일의 요일 알아내기</title>

@@ -13,9 +13,9 @@
 <meta property="og:site_name" content="GyuLog" />
 <meta property="og:locale" content="nn_NO" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://gyukebox.github.io/algorithms/" />
-<meta property="og:title" content="Algorithms" />
-<meta property="twitter:title" content="Algorithms">
+<meta property="og:url" content="https://gyukebox.github.io/algorithms/count-luck/" />
+<meta property="og:title" content="Count Luck" />
+<meta property="twitter:title" content="Count Luck">
 
     <meta property="twitter:card" content="summary">
 
@@ -25,10 +25,10 @@
 <title>
 
 
-     GyuLog - Algorithms 
+     GyuLog - Count Luck 
 
 </title>
-<link rel="canonical" href="https://gyukebox.github.io/algorithms/">
+<link rel="canonical" href="https://gyukebox.github.io/algorithms/count-luck/">
 
 
 <style media="screen">
@@ -1273,8 +1273,6 @@ margin-left: -4%;
 
 
 
-  <link href="https://gyukebox.github.io/algorithms/index.xml" rel="alternate" type="application/rss+xml" title="GyuLog" />
-
 
 </head>
 
@@ -1282,7 +1280,7 @@ margin-left: -4%;
 <body>
 
 
-<div class="header header-home column">
+<div class="header column">
 
     <div class="container">
         
@@ -1322,47 +1320,188 @@ margin-left: -4%;
 <div class="main column">
     <div class="container">
         <div class="content">
-            
+            <div class="page-heading">
+
+    Count Luck
+
+</div>
+
             <div class="markdown">
                 
-                    
-                
-                    
-                
-                    
-                
-            </div>
-            <div class="posts">
-            
-                <div class="page-heading">Algorithms</div>
-                <ul>
-                    
-                        
-                            <li class="post-item">
-    <span class="meta">May 14, 2018</span>
-    <a href="https://gyukebox.github.io/algorithms/welcome/"><span>Welcome to Algorithms!</span></a>
-</li>
+    
+    
 
-                        
-                    
-                        
-                            <li class="post-item">
-    <span class="meta">May 14, 2018</span>
-    <a href="https://gyukebox.github.io/algorithms/day-of-week/"><span>n월 m일의 요일 알아내기</span></a>
-</li>
+<h2 id="문제">문제</h2>
 
-                        
-                    
-                        
-                            <li class="post-item">
-    <span class="meta">Jan 7, 2019</span>
-    <a href="https://gyukebox.github.io/algorithms/count-luck/"><span>Count Luck</span></a>
-</li>
+<p>전체 문제: <a href="https://www.hackerrank.com/challenges/count-luck/problem">https://www.hackerrank.com/challenges/count-luck/problem</a></p>
 
-                        
-                    
-                </ul>
-            
+<p>요약하자면, A에서 B로 가는 길이 오직 하나일 때, <strong>갈림길이 몇 번 나오는지</strong> 찾는 문제이다.
+아래의 그림에서 <code>M</code>이 시작점, <code>*</code>이 종점, <code>X</code>는 벽, <code>.</code>는 길이다.</p>
+
+<pre><code>.X.X......X
+.X*.X.XXX.X
+.XX.X.XM...
+......XXXX.
+</code></pre>
+
+<h2 id="해결-방법">해결 방법</h2>
+
+<p>이런 길찾기 류 문제는 DFS(Depth First Search - 깊이 우선 탐색) 나 BFS(Breadth First Search - 너비 우선 탐색) 를 사용하면 간단하게 해결할 수 있다.
+하지만 이 문제만 놓고 보면 DFS를 사용하는 것이 더욱 편리하다</p>
+
+<h3 id="왜-dfs일까">왜 DFS일까?</h3>
+
+<p>사실 DFS와 BFS 둘 다 그래프의 모든 노드를 찾는다고 가정하면, 시간복잡도는 O(N) 이 된다. (N이 노드의 갯수라고 가정)
+하지만, 이 문제에서 DFS가 편리하다고 생각하는 이유는 바로 문제에서 구해야 하는 값에 있다.</p>
+
+<p>DFS는 보통 재귀함수로 구현하는데, 로직을 간단하게 적어보자면 다음과 같다:</p>
+
+<pre><code>점 A에서:
+1. 동쪽으로 가는 가짓수를 모두 구한다
+2. 서쪽으로 가는 가짓수를 모두 구한다
+3. 남쪽으로 가는 가짓수를 모두 구한다
+4. 북쪽으로 가는 가짓수를 모두 구한다
+5. (1 + 2 + 3 + 4) 를 하면 갈림길 수가 나온다.
+</code></pre>
+
+<p>(위 로직은 주어진 문제를 해결하는 데 완벽하지 않다. 추가적인 예외 처리가 필요하다)
+5번을 주목하자. 재귀함수 몇 번 짜본 사람이면 바로 감이 올 것이다. 우리가 구하고자 하는 <strong>갈림길</strong> 은 바로 <strong>재귀함수가 종료되어 콜 스택에서 빠지는 시점</strong> 이다!
+이 점을 잘 활용하면 위의 문제를 해결할 수 있다.</p>
+
+<h2 id="해결하기">해결하기</h2>
+
+<p>DFS를 하기 전에 먼저 준비작업을 거치자.
+그래프의 방문 여부를 체크하기 위해서 기존 matrix 와 똑같은 dimension 으로 <code>visited</code> 리스트를 만든다.
+그 이후, 시작점과 끝점의 좌표를 구해준 다음, 본 게임으로 들어간다.</p>
+
+<pre><code class="language-python">def find_start_and_end(matrix, row, col):
+    start_point = []
+    end_point = []
+    for i in range(row):
+        for j in range(col):
+            if matrix[i][j] == '*':
+                end_point = [i, j]
+            if matrix[i][j] == 'M':
+                start_point = [i, j]
+    return start_point, end_point
+
+def countLuck(matrix, k):
+    row = len(matrix)
+    col = len(matrix[0])
+    visited = [[False] * col for _ in range(row)]
+    start_point, end_point = find_start_and_end(matrix, row, col)
+    count, _ = dfs(matrix, start_point, end_point, visited, 0)
+    return 'Impressed' if count == k else 'Oops!'
+</code></pre>
+
+<p>이제 dfs 를 구현하자.</p>
+
+<p>재귀함수를 짤 때 가장 중요한 건 바로 <strong>Base Case</strong> 이다. 어떤 경우에 재귀함수를 종료해야 할까? 위의 문제에서는 다음과 같다:</p>
+
+<ul>
+<li>종점에 도달했을 때</li>
+<li>종점에 도달하지 못하고 막다른 길에 왔을 때</li>
+</ul>
+
+<p>여기서 또 다른 중요한 점은, <strong>최종적으로 종점에 도달했을 때 갈림길 수만 세서</strong> 더해야 한다. <strong>&ldquo;두 갈래 길 모두 막다른 길&rdquo; 인 경우</strong>도 존재하기 때문이다!</p>
+
+<p>우선 우리가 필요한 정보인 가로, 세로, 현재 y좌표와 x좌표, 동서남북 좌표를 다 구하고, 현재 위치의 <code>visited</code> 그래프를 <code>True</code>로 바꿔주었다.
+동서남북의 결과가 <code>result</code> 배열에 담기게 될 것이다.</p>
+
+<pre><code class="language-python">def dfs(matrix, current_point, end_point, visited, count):
+    result = []
+    row = len(matrix)
+    col = len(matrix[0])
+    y, x = current_point
+    east = x + 1
+    west = x - 1
+    south = y + 1
+    north = y - 1
+
+    visited[y][x] = True
+
+    if current_point == end_point:
+    	return count, True
+</code></pre>
+
+<p>이제 실제로 길을 찾게 되는 부분을 구현해보자.
+말로는 간단하면서도, 예외처리를 제대로 안해주어서 문제를 풀 때 자꾸 런타임 에러가 났던 부분이다.</p>
+
+<p>방향 순서는 그냥 동서남북으로 정했고, if문을 살펴보면 예외처리와 이동을 동시에 구현했다. 핵심은 다음과 같다:</p>
+
+<ul>
+<li>가려는 좌표가 길이거나 종점인 경우 이동한다</li>
+<li>좌표를 벗어나는 경우 가지 않는다</li>
+<li>이미 방문한 곳은 가지 않는다</li>
+</ul>
+
+<pre><code class="language-python">if east &lt; col and matrix[y][east] in '.*' and not visited[y][east]:
+    result.append(dfs(matrix, [y, east], end_point, visited, count))
+if west &gt;= 0 and matrix[y][west] in '.*' and not visited[y][west]:
+    result.append(dfs(matrix, [y, west], end_point, visited, count))
+if south &lt; row and matrix[south][x] in '.*' and not visited[south][x]:
+    result.append(dfs(matrix, [south, x], end_point, visited, count))
+if north &gt;= 0 and matrix[north][x] in '.*' and not visited[north][x]:
+    result.append(dfs(matrix, [north, x], end_point, visited, count))
+</code></pre>
+
+<p>마지막으로, 갈림길을 구하는 부분을 구현해보자.
+우리가 처리해야 하는 경우의 수는 다음과 같이 세 가지다:</p>
+
+<ul>
+<li>길이 하나 이상 있었고, 그 중에 정답인 길이 있는 경우</li>
+<li>길이 하나 이상이었지만 그 중에 아무 길도 정답이 아닌 경우</li>
+<li>길이 하나도 없었던 경우</li>
+</ul>
+
+<p>맨 처음의 경우에만 우리가 갈림길로 인정해야 하므로, 그런 경우에만 (기존 갈림길 수)에서 1을 더해주고, 정답임을 알려주는 <code>True</code> 도 같이 리턴해주자.
+(이는 재귀함수가 끝나고 함수가 콜 스택에서 빠지면서, 리턴되는 값에서 다시 쓰인다)</p>
+
+<pre><code class="language-python">if result:
+    for value in result:
+    	if value[1]:
+    		return value[0] + 1, True
+    return count, False
+else:
+    return count, False
+</code></pre>
+
+<p>따라서, 전체 dfs 코드는 다음과 같다:</p>
+
+<pre><code class="language-python">def dfs(matrix, current_point, end_point, visited, count):
+    result = []
+    row = len(matrix)
+    col = len(matrix[0])
+    y, x = current_point
+    east = x + 1
+    west = x - 1
+    south = y + 1
+    north = y - 1
+
+    visited[y][x] = True
+
+    if current_point == end_point:
+        return count, True
+
+    if east &lt; col and matrix[y][east] in '.*' and not visited[y][east]:
+        result.append(dfs(matrix, [y, east], end_point, visited, count))
+    if west &gt;= 0 and matrix[y][west] in '.*' and not visited[y][west]:
+        result.append(dfs(matrix, [y, west], end_point, visited, count))
+    if south &lt; row and matrix[south][x] in '.*' and not visited[south][x]:
+        result.append(dfs(matrix, [south, x], end_point, visited, count))
+    if north &gt;= 0 and matrix[north][x] in '.*' and not visited[north][x]:
+        result.append(dfs(matrix, [north, x], end_point, visited, count))
+
+    if result:
+        for value in result:
+    	    if value[1]:
+    	        return value[0] + 1, True
+        return count, False
+    else:
+    	return count, False
+</code></pre>
+
+
             </div>
         </div>
     </div>
@@ -1374,7 +1513,7 @@ margin-left: -4%;
             <div class="copyright">
             
             
-                <a href="https://github.com/gyukebox/gyukebox.github.io/tree/master/content/" target="_blank">View this post on GitHub</a>
+                <a href="https://github.com/gyukebox/gyukebox.github.io/tree/master/content/algorithms/count-luck.md" target="_blank">View this post on GitHub</a>
             
             </div>
         
