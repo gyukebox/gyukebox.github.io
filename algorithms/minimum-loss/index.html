@@ -13,9 +13,9 @@
 <meta property="og:site_name" content="GyuLog" />
 <meta property="og:locale" content="nn_NO" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://gyukebox.github.io/algorithms/" />
-<meta property="og:title" content="Algorithms" />
-<meta property="twitter:title" content="Algorithms">
+<meta property="og:url" content="https://gyukebox.github.io/algorithms/minimum-loss/" />
+<meta property="og:title" content="Minimum Loss" />
+<meta property="twitter:title" content="Minimum Loss">
 
     <meta property="twitter:card" content="summary">
 
@@ -25,10 +25,10 @@
 <title>
 
 
-     GyuLog - Algorithms 
+     GyuLog - Minimum Loss 
 
 </title>
-<link rel="canonical" href="https://gyukebox.github.io/algorithms/">
+<link rel="canonical" href="https://gyukebox.github.io/algorithms/minimum-loss/">
 
 
 <style media="screen">
@@ -1273,8 +1273,6 @@ margin-left: -4%;
 
 
 
-  <link href="https://gyukebox.github.io/algorithms/index.xml" rel="alternate" type="application/rss+xml" title="GyuLog" />
-
 
 </head>
 
@@ -1282,7 +1280,7 @@ margin-left: -4%;
 <body>
 
 
-<div class="header header-home column">
+<div class="header column">
 
     <div class="container">
         
@@ -1322,57 +1320,110 @@ margin-left: -4%;
 <div class="main column">
     <div class="container">
         <div class="content">
-            
+            <div class="page-heading">
+
+    Minimum Loss
+
+</div>
+
             <div class="markdown">
                 
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            </div>
-            <div class="posts">
-            
-                <div class="page-heading">Algorithms</div>
-                <ul>
-                    
-                        
-                            <li class="post-item">
-    <span class="meta">May 14, 2018</span>
-    <a href="https://gyukebox.github.io/algorithms/welcome/"><span>Welcome to Algorithms!</span></a>
-</li>
+    
+    
 
-                        
-                    
-                        
-                            <li class="post-item">
-    <span class="meta">May 14, 2018</span>
-    <a href="https://gyukebox.github.io/algorithms/day-of-week/"><span>n월 m일의 요일 알아내기</span></a>
-</li>
+<h2 id="문제">문제</h2>
 
-                        
-                    
-                        
-                            <li class="post-item">
-    <span class="meta">Jan 7, 2019</span>
-    <a href="https://gyukebox.github.io/algorithms/count-luck/"><span>Count Luck</span></a>
-</li>
+<p>전체 문제: <a href="https://www.hackerrank.com/challenges/minimum-loss/problem">https://www.hackerrank.com/challenges/minimum-loss/problem</a></p>
 
-                        
-                    
-                        
-                            <li class="post-item">
-    <span class="meta">Jan 8, 2019</span>
-    <a href="https://gyukebox.github.io/algorithms/minimum-loss/"><span>Minimum Loss</span></a>
-</li>
+<p>요약하자면, <strong>감소하는 부분 수열 중 간격이 최소인 쌍을 찾는 문제</strong> 이다.</p>
 
-                        
-                    
-                </ul>
-            
+<h2 id="해결-방법">해결 방법</h2>
+
+<p>가장 간단한 방법부터 적용해볼 수 있다. 바로 <strong>일단 다 찾고 보는 것</strong>. (알고리즘에서는 이 기법을 Brute-Force 라고 한다)<br />
+하지만, 이 방법은 실패할 가능성이 매우 높다. 그 이유부터 알아보자.</p>
+
+<p>문제 조건에 보면 2 * 10^5 개의 숫자가 최대로 주어지고, 각 숫자는 10 ^ 16 보다 작거나 같은 자연수이다.<br />
+배열을 돌면서 감소하는 쌍을 다 찾게되면, 만약 배열의 길이가 n이라 할 때, (n - 1) + (n - 2) + &hellip; + 2 번 배열에 접근하게 되고, 시간복잡도는 O(N^2) 가 된다.</p>
+
+<p>따라서 다른 방법을 생각해봐야 하는데, 우선 <strong>정렬해놓고 인접한 쌍들을 검사하는 것</strong> 이다.<br />
+보통 정렬은 O(N * logN) 의 시간복잡도 내에 행해지므로, 위의 브루트 포스 보다는 빠를 것이다.</p>
+
+<h2 id="해결하기">해결하기</h2>
+
+<p>그렇다면, 실제로 우리가 생각한 방식을 코드로 표현해보자.</p>
+
+<p>우선 기존 배열을 정렬한 배열을 하나 만들고, <strong>원본은 그대로 둔다</strong>. 왜 원본을 그대로 둬야 하느냐:<br />
+바로 큰 수가 작은 수보다 원본 배열에서 앞에 있는 경우만 적용해야 하기 때문이다.</p>
+
+<p>다음의 예를 들어보자. 수열이 다음과 같이 있다고 할 때:</p>
+
+<pre><code>20 7 8 2 5
+</code></pre>
+
+<p>두 수의 차의 최소는 1이지만 문제에서 구해야 하는 답은 2이다. 7이 8보다 앞에 있으므로 8 - 7 = 1 의 답은 성립하지 않는다.</p>
+
+<p>배열 요소의 인덱스는 <code>.index()</code> 메서드를 활용해서 구할 수 있으므로, 위의 추가 검증 로직을 적용해서 다음과 같이 만들 수 있다.</p>
+
+<pre><code class="language-python">def minimumLoss(price):
+    min_loss = 10 ** 16
+    num_prices = len(price)
+    sorted_price = sorted(price)
+    for i in range(1, num_prices):
+        if price.index(sorted_price[i]) &lt; price.index(sorted_price[i - 1]):
+            difference = sorted_price[i] - sorted_price[i - 1]
+            if difference &lt; min_loss:
+                min_loss = difference
+    return min_loss
+</code></pre>
+
+<p>위 코드의 시간복잡도를 계산해보면:</p>
+
+<ul>
+<li>정렬: O(N * logN)</li>
+<li>순환: O(N)</li>
+<li>배열 인덱스 찾기: O(N)</li>
+</ul>
+
+<p>이지만, <strong>for loop 안에서 list index lookup 이 이루어지므로 결국 시간복잡도는 O(N ^ 2)</strong> 가 된다!</p>
+
+<h4 id="최적화">최적화</h4>
+
+<p>결국 우리는 <strong>리스트의 인덱스를 알아내는</strong> 부분을 좀 더 효율적으로 만들어야 한다는 결론에 도달했다. 그리고 그 방법은 <strong>딕셔너리 사용</strong> 이다.</p>
+
+<p>Dictionary key 를 list 의 value 로, value 를 list 의 index 로 하게 되면, 우리가 원하는 lookup 을 O(1) 번 만에 수행할 수 있게 된다.<br />
+따라서, 새로운 시간복잡도는:</p>
+
+<ul>
+<li>정렬: O(N * logN)</li>
+<li>순환: O(N)</li>
+<li>인덱스 찾기: O(1)</li>
+</ul>
+
+<p>따라서, 최종 시간복잡도 = O(N * logN) + O(N) = O(N * logN) 이 된다.</p>
+
+<p>기존의 코드에서 리스트를 딕셔너리화 시켜주는 부분만 추가하면 문제를 시간 내에 해결할 수 있다. 그 방법 중 하나는 다음과 같게 된다:</p>
+
+<pre><code class="language-python">def minimumLoss(price):
+    min_loss = 10 ** 16
+    num_prices = len(price)
+    prices_dict = {}
+    for i in range(num_prices):
+        prices_dict[price[i]] = i
+    sorted_price = sorted(price)
+    for i in range(1, num_prices):
+        if prices_dict[sorted_price[i]] &lt; prices_dict[sorted_price[i - 1]]:
+            difference = sorted_price[i] - sorted_price[i - 1]
+            if difference &lt; min_loss:
+                min_loss = difference
+    return min_loss
+</code></pre>
+
+<h2 id="마치며">마치며</h2>
+
+<p>시간복잡도 계산의 중요성을 다시 느낄 수 있었던 문제였다. 첫 번째 코드를 머릿속으로만 로직을 생각했을 때에는 &ldquo;어 이거 N * log N 번만에 되는 거 아니야?&rdquo; 라고 생각하기 쉬운데 막상 뜯어보니 아니었다.<br />
+실제 제품 개발할때도 하나의 작은 움직임이 큰 성능 차이를 만들 수 있음을 항상 생각하면서 개발해야겠다고 느꼈다.</p>
+
+
             </div>
         </div>
     </div>
@@ -1384,7 +1435,7 @@ margin-left: -4%;
             <div class="copyright">
             
             
-                <a href="https://github.com/gyukebox/gyukebox.github.io/tree/master/content/" target="_blank">View this post on GitHub</a>
+                <a href="https://github.com/gyukebox/gyukebox.github.io/tree/master/content/algorithms/minimum-loss.md" target="_blank">View this post on GitHub</a>
             
             </div>
         

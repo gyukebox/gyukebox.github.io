@@ -6,10 +6,24 @@
     <description>Recent content on GyuLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Mon, 07 Jan 2019 21:13:34 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 08 Jan 2019 19:36:57 +0900</lastBuildDate>
     
 	<atom:link href="https://gyukebox.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Minimum Loss</title>
+      <link>https://gyukebox.github.io/algorithms/minimum-loss/</link>
+      <pubDate>Tue, 08 Jan 2019 19:36:57 +0900</pubDate>
+      
+      <guid>https://gyukebox.github.io/algorithms/minimum-loss/</guid>
+      <description>문제 전체 문제: https://www.hackerrank.com/challenges/minimum-loss/problem
+요약하자면, 감소하는 부분 수열 중 간격이 최소인 쌍을 찾는 문제 이다.
+해결 방법 가장 간단한 방법부터 적용해볼 수 있다. 바로 일단 다 찾고 보는 것. (알고리즘에서는 이 기법을 Brute-Force 라고 한다)
+하지만, 이 방법은 실패할 가능성이 매우 높다. 그 이유부터 알아보자.
+문제 조건에 보면 2 * 10^5 개의 숫자가 최대로 주어지고, 각 숫자는 10 ^ 16 보다 작거나 같은 자연수이다.
+배열을 돌면서 감소하는 쌍을 다 찾게되면, 만약 배열의 길이가 n이라 할 때, (n - 1) + (n - 2) + &amp;hellip; + 2 번 배열에 접근하게 되고, 시간복잡도는 O(N^2) 가 된다.</description>
+    </item>
     
     <item>
       <title>Count Luck</title>
