@@ -1,58 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Algorithms on GyuLog</title>
-    <link>https://gyukebox.github.io/algorithms/</link>
-    <description>Recent content in Algorithms on GyuLog</description>
+    <title>Algorithms on JoeyLog</title>
+    <link>https://joeyworld.github.io/algorithms/</link>
+    <description>Recent content in Algorithms on JoeyLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Tue, 08 Jan 2019 19:36:57 +0900</lastBuildDate>
-    
-	<atom:link href="https://gyukebox.github.io/algorithms/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Minimum Loss</title>
-      <link>https://gyukebox.github.io/algorithms/minimum-loss/</link>
-      <pubDate>Tue, 08 Jan 2019 19:36:57 +0900</pubDate>
-      
-      <guid>https://gyukebox.github.io/algorithms/minimum-loss/</guid>
-      <description>문제 전체 문제: https://www.hackerrank.com/challenges/minimum-loss/problem
-요약하자면, 감소하는 부분 수열 중 간격이 최소인 쌍을 찾는 문제 이다.
-해결 방법 가장 간단한 방법부터 적용해볼 수 있다. 바로 일단 다 찾고 보는 것. (알고리즘에서는 이 기법을 Brute-Force 라고 한다)
-하지만, 이 방법은 실패할 가능성이 매우 높다. 그 이유부터 알아보자.
-문제 조건에 보면 2 * 10^5 개의 숫자가 최대로 주어지고, 각 숫자는 10 ^ 16 보다 작거나 같은 자연수이다.
-배열을 돌면서 감소하는 쌍을 다 찾게되면, 만약 배열의 길이가 n이라 할 때, (n - 1) + (n - 2) + &amp;hellip; + 2 번 배열에 접근하게 되고, 시간복잡도는 O(N^2) 가 된다.</description>
-    </item>
-    
-    <item>
-      <title>Count Luck</title>
-      <link>https://gyukebox.github.io/algorithms/count-luck/</link>
-      <pubDate>Mon, 07 Jan 2019 21:13:34 +0900</pubDate>
-      
-      <guid>https://gyukebox.github.io/algorithms/count-luck/</guid>
-      <description>문제 전체 문제: https://www.hackerrank.com/challenges/count-luck/problem
-요약하자면, A에서 B로 가는 길이 오직 하나일 때, 갈림길이 몇 번 나오는지 찾는 문제이다. 아래의 그림에서 M이 시작점, *이 종점, X는 벽, .는 길이다.
-.X.X......X .X*.X.XXX.X .XX.X.XM... ......XXXX.  해결 방법 이런 길찾기 류 문제는 DFS(Depth First Search - 깊이 우선 탐색) 나 BFS(Breadth First Search - 너비 우선 탐색) 를 사용하면 간단하게 해결할 수 있다. 하지만 이 문제만 놓고 보면 DFS를 사용하는 것이 더욱 편리하다</description>
-    </item>
-    
+    <lastBuildDate>Mon, 14 May 2018 01:31:05 +0900</lastBuildDate><atom:link href="https://joeyworld.github.io/algorithms/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>n월 m일의 요일 알아내기</title>
-      <link>https://gyukebox.github.io/algorithms/day-of-week/</link>
+      <link>https://joeyworld.github.io/algorithms/day-of-week/</link>
       <pubDate>Mon, 14 May 2018 01:31:05 +0900</pubDate>
       
-      <guid>https://gyukebox.github.io/algorithms/day-of-week/</guid>
-      <description> 출처 : https://www.acmicpc.net/problem/1924
+      <guid>https://joeyworld.github.io/algorithms/day-of-week/</guid>
+      <description>출처 : https://www.acmicpc.net/problem/1924
 문제 요약 2007년 1월 1일이 월요일이라고 할 때 n월 m일은 무슨 요일일지 알아내시오.
 문제 해결 전략 </description>
     </item>
     
     <item>
       <title>Welcome to Algorithms!</title>
-      <link>https://gyukebox.github.io/algorithms/welcome/</link>
+      <link>https://joeyworld.github.io/algorithms/welcome/</link>
       <pubDate>Mon, 14 May 2018 01:09:40 +0900</pubDate>
       
-      <guid>https://gyukebox.github.io/algorithms/welcome/</guid>
+      <guid>https://joeyworld.github.io/algorithms/welcome/</guid>
       <description>What this is about 파이썬 개발자의 알고리즘 로그 입니다.
 그냥 제가 풀고 싶은 문제들을 풀 거에요. 그냥 아무거나.
 쉬운 문제일 수도 있고, 어려운 문제일 수도 있습니다.
